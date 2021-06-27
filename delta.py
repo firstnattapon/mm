@@ -64,4 +64,4 @@ class  delta :
         return cf_data
 
     
-st.text_input('Enter some text')
+st.text_input('pair_data')
