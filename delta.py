@@ -75,5 +75,5 @@ delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , t
 delta_A= delta_A.cf()
 
 
-
-st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
+d2 , d1   = st.beta_columns(2)
+dA.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
