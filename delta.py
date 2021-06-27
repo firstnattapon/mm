@@ -7,7 +7,6 @@ import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 from datetime import datetime
 
-
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, pair_data = 'SRM-PERP', timeframe = '1h' , limit  = 2500):
         self.usd    = usd
@@ -62,3 +61,5 @@ class  delta :
         cf_data['cf_change'] =  (cf_data['cf_usd'] /  cf_data.iloc[0 , 10]) *100
         cf_data['0'] = 0
         return cf_data
+
+    
