@@ -70,5 +70,7 @@ invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "1h")
 limit = int(col5.text_input("limit", "2500"))
 
-
 delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , timeframe =  timeframe  , limit  = limit)
+delta_A= delta_A.cf()
+
+st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
