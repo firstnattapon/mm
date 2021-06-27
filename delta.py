@@ -17,3 +17,5 @@ col3.subheader('3')
 col4.subheader('4')
 col5.subheader('5')
 
+pair_data = col1.text_input("pair_data", "1")
+fix_value = col2.text_input("fix_value", "1")
