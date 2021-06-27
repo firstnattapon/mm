@@ -76,8 +76,8 @@ limit = int(col5.text_input("limit", "2500"))
 delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , timeframe =  timeframe  , limit  = limit)
 delta_A= delta_A.cf()
 
-st.dataframe(delta_A.head(2))
-st.dataframe(delta_A.tail(2))
+st.dataframe(delta_A.head(1))
+st.dataframe(delta_A.tail(1))
 
 st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
 st.line_chart(delta_A[['pvnav_change' , 'change_mkt' , '0' ]])
