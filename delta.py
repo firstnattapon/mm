@@ -1,13 +1,13 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt  
+import seaborn as sns
 import pandas_datareader  as pdr
 import ccxt
 import streamlit as st
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 from datetime import datetime
-import altair as alt
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, pair_data = 'SRM-PERP', timeframe = '1h' , limit  = 2500):
