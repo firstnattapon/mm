@@ -73,6 +73,9 @@ limit = int(col5.text_input("limit", "2500"))
 delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , timeframe =  timeframe  , limit  = limit)
 delta_A= delta_A.cf()
 
-st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
-st.area_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
-st.bar_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
+
+data = delta_A[['cf_change' , 'change_mkt' , '0' ]]
+st.line_chart(data)
+st.area_chart(data)
+st.bar_chart(data)
+st.altair_chart(data)
