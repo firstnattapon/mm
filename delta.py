@@ -79,4 +79,4 @@ delta_A= delta_A.cf()
 st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
 st.line_chart(delta_A[['pvnav_change' , 'change_mkt' , '0' ]])
 
-st.table(df1)
+delta_A
