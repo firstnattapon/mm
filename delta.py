@@ -77,9 +77,9 @@ delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , t
 delta_A= delta_A.cf()
 
 _, _ , head , _ ,   = st.beta_columns(4)
-_, _ , tail , _ ,   = st.beta_columns(4)
 head.text('เริ่ม')
 st.dataframe(delta_A.head(1))
+_, _ , tail , _ ,   = st.beta_columns(4)
 tail.text('ล่าสุด')
 st.dataframe(delta_A.tail(1))
 
