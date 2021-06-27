@@ -77,8 +77,10 @@ delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , t
 delta_A= delta_A.cf()
 
 _, _ , head , _ ,   = st.beta_columns(4)
-head.text('เริ่ม')
+_, _ , tail , _ ,   = st.beta_columns(4)
+head.subheader('เริ่ม')
 st.dataframe(delta_A.head(1))
+tail.subheader('ล่าสุด')
 st.dataframe(delta_A.tail(1))
 
 st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
