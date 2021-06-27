@@ -77,4 +77,6 @@ delta_A= delta_A.cf()
 
 
 data = delta_A[['cf_change' , 'change_mkt' , '0' ]]
+
+sns.lineplot(data=data, x="year", y="passengers")
 st.pyplot(data)
