@@ -63,6 +63,4 @@ class  delta :
         cf_data['0'] = 0
         return cf_data
 
-    
-
 col1, col2 , col3, col4 ,col5 = st.beta_columns(5)
