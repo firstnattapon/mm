@@ -76,6 +76,8 @@ limit = int(col5.text_input("limit", "2500"))
 delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , timeframe =  timeframe  , limit  = limit)
 delta_A= delta_A.cf()
 
+_, _ , head , _ ,   = st.beta_columns(4)
+st.text('เริ่ม')
 st.dataframe(delta_A.head(1))
 st.dataframe(delta_A.tail(1))
 
