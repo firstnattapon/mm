@@ -87,8 +87,8 @@ st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
 st.line_chart(delta_A[['pvnav_change' , 'change_mkt' , '0' ]])
 
 
-# print('index        :' , len(delta_A) )
-# print('')
-# print( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
-# print('')
-# print( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
+st.text('index        :' , len(delta_A) )
+st.text('')
+st.text( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
+st.text('')
+st.text( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
