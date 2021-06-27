@@ -12,5 +12,5 @@ from datetime import datetime
 col1, col2 = st.beta_columns(2)
 
 col1.subheader('1')
-col1.subheader('2')
+col2.subheader('2')
 
