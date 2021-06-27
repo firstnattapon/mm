@@ -9,7 +9,7 @@ warnings.filterwarnings("ignore", category=RuntimeWarning)
 from datetime import datetime
 
 
-col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
+col1, col2 , col3 , col4 , col5   = st.beta_columns(4)
 
 col1.subheader('1')
 col2.subheader('2')
