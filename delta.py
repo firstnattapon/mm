@@ -64,3 +64,4 @@ class  delta :
         return cf_data
 
     
+st.text_area('Area for textual entry')
