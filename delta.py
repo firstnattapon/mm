@@ -12,8 +12,8 @@ from datetime import datetime
 col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
 pair_data = col1.text_input("pair_data", "CRV/USD")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
-invest = col3.text_input("invest" , "1000")
+invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "1h")
-limit = col5.text_input("limit", "2500")
+limit = int(col5.text_input("limit", "2500"))
 
 
