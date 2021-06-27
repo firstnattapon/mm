@@ -79,7 +79,7 @@ delta_A= delta_A.cf()
 st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
 st.line_chart(delta_A[['pvnav_change' , 'change_mkt' , '0' ]])
 
-st.table(delta_A.iloc[0:5])
+st.table(delta_A.iloc[-5:-1])
 
 # print('index        :' , len(delta_A) )
 # print('')
