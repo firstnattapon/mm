@@ -11,6 +11,6 @@ from datetime import datetime
 
 col1, col2 = st.beta_columns(2)
 
-col1.text_input('Enter some text')
-col2.text_input('Enter some text')
+col1.subheader('1')
+col1.subheader('2')
 
