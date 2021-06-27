@@ -76,7 +76,4 @@ delta_A= delta_A.cf()
 
 
 data = delta_A[['cf_change' , 'change_mkt' , '0' ]]
-st.line_chart(data)
-st.area_chart(data)
-st.bar_chart(data)
-st.altair_chart(data)
+st.pyplot(data)
