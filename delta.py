@@ -78,9 +78,9 @@ delta_A= delta_A.cf()
 
 _, _ , head , _ ,   = st.beta_columns(4)
 _, _ , tail , _ ,   = st.beta_columns(4)
-head.subheader('เริ่ม')
+head.text('เริ่ม')
 st.dataframe(delta_A.head(1))
-tail.subheader('ล่าสุด')
+tail.text('ล่าสุด')
 st.dataframe(delta_A.tail(1))
 
 st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
