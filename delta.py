@@ -64,4 +64,6 @@ class  delta :
         return cf_data
 
     
-st.text_input('pair_data')
+spec = st.text_input('pair_data')
+st.beta_columnsspec(spec)
+col1, col2 = st.beta_columns(spec)
