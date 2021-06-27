@@ -83,12 +83,12 @@ _, _ , tail , _ ,   = st.beta_columns(4)
 tail.write('ล่าสุด')
 st.dataframe(delta_A.tail(1))
 
+st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
+st.line_chart(delta_A[['pvnav_change' , 'change_mkt' , '0' ]])
+
+
 st.write('index        :' , len(delta_A) )
 st.write('')
 st.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
 st.write('')
 st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
-
-st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
-st.line_chart(delta_A[['pvnav_change' , 'change_mkt' , '0' ]])
-
