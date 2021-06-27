@@ -11,8 +11,8 @@ from datetime import datetime
 
 col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
 
-pair_data = col1.text_input("pair_data", "1")
-fix_value = col2.text_input("fix_value", "1")
-invest = col3.text_input("invest", "1")
+pair_data = col1.text_input("pair_data", "CRV/USD")
+fix_value = col2.number_input("fix_value", 0.5 )
+invest = col3.number_input("invest",  1000)
 # fix_value = col4.text_input("fix_value", "1")
 # invest = col5.text_input("fix_value", "1")
