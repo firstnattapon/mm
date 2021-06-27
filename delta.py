@@ -63,6 +63,8 @@ class  delta :
         cf_data['cf_change'] =  (cf_data['cf_usd'] /  cf_data.iloc[0 , 10]) *100
         cf_data['0'] = 0
         return cf_data
+    
+#  streamlit
 
 col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
 pair_data = col1.text_input("pair_data", "CRV/USD")
@@ -73,7 +75,6 @@ limit = int(col5.text_input("limit", "2500"))
 
 delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , timeframe =  timeframe  , limit  = limit)
 delta_A= delta_A.cf()
-
 
 st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
 st.line_chart(delta_A[['pvnav_change' , 'change_mkt' , '0' ]])
