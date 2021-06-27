@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt  
-import seaborn as sns
-sns.set()
 import pandas_datareader  as pdr
 import ccxt
 import streamlit as st
@@ -78,5 +76,5 @@ delta_A= delta_A.cf()
 
 data = delta_A[['cf_change' , 'change_mkt' , '0' ]]
 
-sns.lineplot(data=data)
-st.pyplot(data)
+plt.plot(data)
+st.pyplot()
