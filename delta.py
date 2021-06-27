@@ -74,3 +74,4 @@ delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , t
 delta_A= delta_A.cf()
 
 st.line_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
+st.area_chart(delta_A[['cf_change' , 'change_mkt' , '0' ]])
