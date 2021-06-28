@@ -9,6 +9,9 @@ warnings.filterwarnings("ignore", category=RuntimeWarning)
 from datetime import datetime
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+st.write("DB password:", st.secrets["key"])
+
+
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, pair_data = 'SRM-PERP', timeframe = '1h' , limit  = 2500):
         self.usd    = usd
