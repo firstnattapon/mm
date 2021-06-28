@@ -84,7 +84,7 @@ st.write('data        :' , len(delta_A) )
 st.write('')
 st.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
 st.write('')
-st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
+col5.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 
 _, _ , head , _ ,   = st.beta_columns(4) 
 head.write('เริ่ม')
