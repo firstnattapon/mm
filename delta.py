@@ -11,7 +11,6 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.write("DB username:", st.secrets["db_username"])
 st.write("DB password:", st.secrets["db_password"])
-st.write("My cool secrets:", st.secrets["my_cool_secrets"]["things_i_like"])
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, pair_data = 'SRM-PERP', timeframe = '1h' , limit  = 2500):
