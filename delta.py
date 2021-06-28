@@ -76,7 +76,7 @@ limit = int(col5.text_input("limit", "2500"))
 delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , timeframe =  timeframe  , limit  = limit)
 delta_A= delta_A.cf()
 
-_ = delta_A[['change_mkt' ,'cf_change'  ,  '0' ]]
+_ = delta_A[['cf_change' ,'change_mkt'  ,  '0' ]]
 st.area_chart(_)
 _ = delta_A[['change_mkt'  ,'pvnav_change'  , '0' ]]
 st.area_chart(_)
