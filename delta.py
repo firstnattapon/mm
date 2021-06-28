@@ -65,7 +65,6 @@ class  delta :
         return cf_data
     
 #  streamlit
-
 col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
 pair_data = col1.text_input("pair_data", "CRV/USD")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
@@ -81,13 +80,12 @@ st.line_chart(_)
 _ = delta_A[[ 'pvnav_change', 'change_mkt' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
 
-
-_ , col6 , _  = st.beta_columns(3)
+_ , col6, _  = st.beta_columns(3)
 col6.write('data        :' , len(delta_A) )
-col6.write('')
-col6.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
-col6.write('')
-col6.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
+# col6.write('')
+# col6.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
+# col6.write('')
+# col6.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 
 _, _ , head , _ ,   = st.beta_columns(4) 
 head.write('เริ่ม')
