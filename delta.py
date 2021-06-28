@@ -77,9 +77,9 @@ delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , t
 delta_A= delta_A.cf()
 
 _ = delta_A[['cf_change' ,'change_mkt' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
-st.area_chart(_)
+st.bar_chart(_)
 _ = delta_A[[ 'pvnav_change', 'change_mkt' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"] 
-st.area_chart(_)
+st.bar_chart(_)
 
 st.write('index        :' , len(delta_A) )
 st.write('')
