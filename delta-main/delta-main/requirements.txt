@@ -1,0 +1,12 @@
+pip
+streamlit
+pandas
+plotly
+ccxt
+matplotlib
+seaborn
+numpy
+datetime
+pandas_datareader
+yfinance
+altair
