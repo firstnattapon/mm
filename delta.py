@@ -81,7 +81,7 @@ _ = delta_A[[ 'pvnav_change', 'change_mkt' , '0' ]] ; _.columns = ['1: pv_%', '2
 st.line_chart(_)
 
 _ , col6, _  = st.beta_columns(3)
-st.write('data        :' , len(delta_A) )
+col6.write('data        :' , len(delta_A) )
 # col6.write('')
 # col6.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
 # col6.write('')
