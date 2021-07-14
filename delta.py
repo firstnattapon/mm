@@ -128,8 +128,8 @@ for it in range(9999):
 
 series = np.unique(y)
 
-delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , timeframe =  timeframe  , limit  = limit , 
-                series_num= series , start_end=[152 , 181]) 
+delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe  , limit  = limit , 
+                series_num = series , start_end =[152 , 181]) 
 delta_A= delta_A.final()
 
 
