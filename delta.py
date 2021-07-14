@@ -8,6 +8,7 @@ import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 from datetime import datetime
 st.set_option('deprecation.showPyplotGlobalUse', False)
+import datetime
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'ALPHA-PERP', timeframe = '15m' 
