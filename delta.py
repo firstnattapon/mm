@@ -130,8 +130,8 @@ for it in range(9999):
 
 series = np.unique(y)
 
-delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe  ,
-                series_num = series , start_end =[start , end]) 
+
+delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
 
 
