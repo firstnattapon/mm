@@ -110,7 +110,6 @@ class  delta :
         final['t'] =    final.index.dayofyear
         return final
   
-    
 #  streamlit
 col1, col2 , col3 , col4 , col5 , col6  = st.beta_columns(6)
 pair_data = col1.text_input("pair_data", "CAKE-PERP")
@@ -132,7 +131,6 @@ series = np.unique(y)
 
 delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
-
 
 _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
