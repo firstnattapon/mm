@@ -117,8 +117,8 @@ pair_data = col1.text_input("pair_data", "CAKE-PERP")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "15m")
-start = col5.date_input('start' , datetime.date(2021,7,1)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
-end = col6.date_input('end', datetime.date(2021,7,31)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
+start = col5.date_input('start' , datetime.date(2021,7,1)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
+end = col6.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
 
 y = []
 x = 0.45 
@@ -129,7 +129,6 @@ for it in range(9999):
     y.append(np.around( x * max))
 
 series = np.unique(y)
-
 
 delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
