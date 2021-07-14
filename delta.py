@@ -118,8 +118,8 @@ fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "15m")
 # start = int(col5.text_input("start", "5000"))
-start = col5.sidebar.date_input('start' , datetime.date(2021,7,1)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
-end = col6.sidebar.date_input('end', datetime.date(2021,7,30)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
+start = col5.date_input('start' , datetime.date(2021,7,1)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
+end = col6.date_input('end', datetime.date(2021,7,30)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
 
 y = []
 x = 0.45 
