@@ -10,70 +10,128 @@ from datetime import datetime
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 class  delta :
-    def __init__(self , usd = 1000 , fix_value = 0.50, pair_data = 'SRM-PERP', timeframe = '1h' , limit  = 2500):
+    def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'ALPHA-PERP', timeframe = '15m' 
+                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [179 , 193]):
         self.usd    = usd
         self.fix_value  = fix_value
-        self.pair_data = pair_data
+        self.p_data = p_data
         self.timeframe = timeframe
         self.limit = limit
-        
+        self.series_num = series_num
+        self.minimum_re = minimum_re
+        self.start_end = start_end
+
     def get_data(self):
         exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
-        ohlcv = exchange.fetch_ohlcv(self.pair_data, self.timeframe, limit=self.limit)
+        ohlcv = exchange.fetch_ohlcv(self.p_data, self.timeframe, limit=self.limit)
         ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
         df = pd.DataFrame(ohlcv)
         df.t = df.t.apply(lambda x: datetime.fromtimestamp(x))
-        df = df.set_index(df['t']);
+        df = df.set_index(df['t'])
+        df.t = df.index.dayofyear
+        df = df.loc[df.t >= self.start_end[0]]
+        df = df.loc[df.t <= self.start_end[1]]
         df = df.drop(['t'], axis=1)
         df = df.rename(columns={"o": "open", "h": "high", "l": "low", "c": "close", "v": "volume"})
         df = df.drop(['open', 'high' , 'low' , 'volume'] , axis=1) 
         df = df.dropna()
         return df
 
-    def  mkt (self):
-        mkt_data  = self.get_data()
-        mkt_data['cash_mkt']     = np.nan ; mkt_data.iloc[0, 1]  = (self.usd * self.fix_value) ; mkt_data['cash_mkt']  = mkt_data.iloc[0, 1]
-        mkt_data['amount_mkt']  = mkt_data.iloc[0, 2] = ((self.usd * self.fix_value) / mkt_data.iloc[0, 0])  ; mkt_data['amount_mkt']  = mkt_data.iloc[0, 2]
-        mkt_data['asset_value_mkt'] = (mkt_data['amount_mkt'] * mkt_data['close'])
-        mkt_data['sumusd_mkt'] = (mkt_data['asset_value_mkt']  + mkt_data['cash_mkt'])
-        mkt_data['change_mkt'] =  ((mkt_data['sumusd_mkt'] - mkt_data.iloc[0, 4]) / mkt_data.iloc[0, 4]) * 100
-        return mkt_data
+    def series(self):
+        series  = self.get_data()
+        series['index'] =np.array([ i for i in range(len(series))])
+        series['perdit'] =series['index'].apply(func= (lambda x : np.where( x in self.series_num , 1 , 0)))
+        return series
 
     def  nav (self):
-        nav_data = self.mkt()
-        nav_data['amount_nav'] =    (self.usd * self.fix_value)  /  nav_data['close']
-        nav_data['re_nav'] = (nav_data['amount_nav'].shift()* nav_data['close']) -  (self.usd * self.fix_value) 
-        nav_data['cash_nav'] =  np.nan ; nav_data = nav_data.fillna(0) 
-
-        for i in range(len(nav_data['cash_nav'])):
+        nav_data = self.series()
+        nav_data['amount'] =  np.nan
+        for i in range(len(nav_data)): # amount
             if i == 0 :
-                 nav_data.iloc[i, 8] =   (self.usd * self.fix_value) 
-            else:
-                nav_data.iloc[i, 8] =   ( nav_data.iloc[i, 7] + nav_data.iloc[i - 1, 8])
+                nav_data.iloc[i, 3] =   (self.usd * self.fix_value)  / nav_data.iloc[i, 0]
+            else :
+                nav_data.iloc[i, 3] =   np.where(nav_data.iloc[i, 2] == 0 ,  nav_data.iloc[i-1, 3] , 
+                                                (self.usd * self.fix_value) / nav_data.iloc[i, 0])          
+                
+        nav_data['asset_value'] =  (nav_data['close']*nav_data['amount']) 
 
-        nav_data['asset_value_nav'] =  ( nav_data['close']*nav_data['amount_nav'] ) 
-        nav_data['sumusd_nav']  = (nav_data['cash_nav'] +  nav_data['asset_value_nav'] )
-        nav_data['pvnav_change']  = (( nav_data['sumusd_nav'] - nav_data.iloc[0 , 10] ) / nav_data.iloc[0 , 10]) *100
+        nav_data['re'] =  np.nan
+        for i in range(len(nav_data)): # re
+            if i == 0 :
+                nav_data.iloc[i, 5] =    0
+            else :
+                nav_data.iloc[i, 5] =    np.where(nav_data.iloc[i, 2] == 1 and 
+                                                  (abs((nav_data.iloc[i-1, 3] * nav_data.iloc[i, 0]) - (self.usd * self.fix_value)) 
+                                                  / (self.usd * self.fix_value)) >= self.minimum_re
+                                                  , (nav_data.iloc[i-1, 3] * nav_data.iloc[i, 0]) -  (self.usd * self.fix_value) , 0)
+
+        nav_data['cash'] =  np.nan
+        for i in range(len(nav_data)): # cash
+            if i == 0 :
+                nav_data.iloc[i, 6] =    (self.usd * self.fix_value)
+            else :
+                nav_data.iloc[i, 6] =   (nav_data.iloc[i-1, 6] + nav_data.iloc[i, 5] )
+
+        nav_data['sumusd'] =  (nav_data['cash'] + nav_data['asset_value'])
 
         return nav_data
 
+    def  mkt (self):
+        mkt_data  = self.nav()
+        mkt_data[':'] = ':'
+        mkt_data['cash_mkt'] =  (self.usd * self.fix_value)
+        mkt_data['amount_mkt'] =   (mkt_data.iloc[0, 9]  / mkt_data.iloc[0, 0])
+        mkt_data['assetvalue_mkt'] =  mkt_data['close'] * mkt_data['amount_mkt']
+        mkt_data['sumusd_mkt'] = (mkt_data['assetvalue_mkt']  + mkt_data['cash_mkt'])
+
+        return mkt_data
+
     def cf (self):
-        cf_data = self.nav()
-        cf_data['cf_usd'] =   (cf_data['sumusd_nav']  - cf_data['sumusd_mkt'])
-        cf_data['cf_change'] =  (cf_data['cf_usd'] /  cf_data.iloc[0 , 10]) *100
-        cf_data['0'] = 0
+        cf_data = self.mkt()
+        cf_data[' : '] = ' : '
+        cf_data['cf_usd'] =   cf_data['sumusd']  - cf_data['sumusd_mkt']
+        cf_data['cf_change'] =  (cf_data['cf_usd'] /  cf_data.iloc[0 , 7]) * 100
+
         return cf_data
+
+    def change (self):
+        change_data = self.cf()
+        change_data['  :  '] = '  :  '
+        change_data['price_change'] =   ((change_data['sumusd_mkt'] - change_data.iloc[0, 12]) / change_data.iloc[0, 12]) * 100
+        change_data['pv_change']  = ((change_data['sumusd'] - change_data.iloc[0 , 7] ) / change_data.iloc[0 , 7]) *100
+
+        return change_data
+
+    def  final (self):
+        final = self.change()
+        final['   :   '] = '   :   '
+        final['0'] =  0
+        final['t'] =    final.index.dayofyear
+        return final
+  
     
 #  streamlit
 col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
-pair_data = col1.text_input("pair_data", "CRV/USD")
+pair_data = col1.text_input("pair_data", "CAKE-PERP")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
-timeframe = col4.text_input("timeframe", "1h")
-limit = int(col5.text_input("limit", "2500"))
+timeframe = col4.text_input("timeframe", "15m")
+limit = int(col5.text_input("limit", "5000"))
 
-delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , timeframe =  timeframe  , limit  = limit)
-delta_A= delta_A.cf()
+y = []
+x = 0.45 
+mu = 3.97 
+max = 2880
+for it in range(9999):
+    x = mu * x * (1.0 - x)
+    y.append(np.around( x * max))
+
+series = np.unique(y)
+
+delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , timeframe =  timeframe  , limit  = limit , 
+                series_num= series , start_end=[152 , 181]) 
+delta_A= delta_A.final()
+
 
 _ = delta_A[['cf_change' ,'change_mkt' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
