@@ -159,7 +159,7 @@ elif options == 'sumusd_hold vs sumusd_mkt':
     
 _ = delta_A[plot] #  ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 
-_ = delta_A[['cf_change' ,'price_change' ,'0' ]] #  ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+# _ = delta_A[['cf_change' ,'price_change' ,'0' ]] #  ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
 
 st.write('x0 :' , 0.45  , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
