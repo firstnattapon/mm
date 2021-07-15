@@ -153,6 +153,7 @@ elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt']
   
 plt.subplots(figsize=(12, 8))
 plt.plot(delta_A[plot])
+plt.legend()
 st.pyplot()
 
 # _ = delta_A[plot]  #; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
