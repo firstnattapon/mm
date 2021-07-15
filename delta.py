@@ -7,9 +7,9 @@ import streamlit as st
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 from datetime import datetime
-st.set_option('deprecation.showPyplotGlobalUse', False)
+# st.set_option('deprecation.showPyplotGlobalUse', False)
 import datetime
-plt.style.use('ggplot')
+# plt.style.use('ggplot')
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'ALPHA-PERP', timeframe = '15m' 
