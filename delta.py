@@ -123,6 +123,7 @@ y = []
 x = 0.45 
 mu = 3.97 
 max = 2880
+n = 9999
 for it in range(9999):
     x = mu * x * (1.0 - x)
     y.append(np.around( x * max))
@@ -137,6 +138,7 @@ st.line_chart(_)
 _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
 
+st.write('x0 :' , x , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
 st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
          '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' , round(delta_A['re'][-1] , 2))
 st.write('cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%','   ,   cf_usd :',  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
@@ -146,6 +148,6 @@ st.write('sumusd :'  , round(delta_A['sumusd'][-1] , 2) , '   ,   sumusd_mkt :',
 # _, _ , head , _ ,   = st.beta_columns(4) 
 # head.write('เริ่ม')
 # st.dataframe(delta_A.head(1))
-_, _ , tail , _ ,   = st.beta_columns(4)
-tail.write('ล่าสุด')
-st.dataframe(delta_A.tail(20))
+# _, _ , tail , _ ,   = st.beta_columns(4)
+# tail.write('ล่าสุด')
+# st.dataframe(delta_A.tail(20))
