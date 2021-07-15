@@ -133,8 +133,10 @@ series = np.unique(y)
 delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
 
-col7, col8  = st.beta_columns(2)
-col7.radio('Radio', ['pv_change vs price_change', 2 , 3 ] ,  index=0 )
+st.radio('Radio', [
+    'pv_change vs price_change',
+    2 ,
+    3 ] ,  index=0 )
  
 
 # _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
@@ -154,4 +156,4 @@ st.write('sumusd :'  , round(delta_A['sumusd'][-1] , 2) , '   ,   sumusd_mkt :',
 # st.dataframe(delta_A.head(1))
 # _, _ , tail , _ ,   = st.beta_columns(4)
 # tail.write('ล่าสุด')
-# st.dataframe(delta_A.tail(20))
+st.dataframe(delta_A.tail(20))
