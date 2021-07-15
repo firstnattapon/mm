@@ -152,7 +152,8 @@ elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
 elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt']
   
 plt.subplots(figsize=(12, 8))
-plt.plot(delta_A[plot])
+for i in plot:
+    plt.plot(delta_A[i] , label =i)
 plt.legend()
 st.pyplot()
 
