@@ -130,8 +130,7 @@ for it in range(9999):
     x = mu * x * (1.0 - x)
     y.append(np.around( x * max))
     
-st.write(y[-1])
-if x == 0.9237416727562783 :
+if x == 0.9237416727562783 and y[-1] == 2660.0 :
     
     series = np.unique(y)
     delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
