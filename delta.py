@@ -137,11 +137,12 @@ st.line_chart(_)
 _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
 
-st.write('data        :' , len(delta_A) )
-st.write('')
-st.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
-st.write('')
-st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
+col7, col8 , col9  = st.beta_columns(3)
+col7.write('data        :' , len(delta_A) )
+col7.write('')
+col7.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
+col7.write('')
+col7.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 
 _, _ , head , _ ,   = st.beta_columns(4) 
 head.write('เริ่ม')
