@@ -130,52 +130,54 @@ for it in range(9999):
     x = mu * x * (1.0 - x)
     y.append(np.around( x * max))
     
-st.write(x)
+if x == 0.9237416727562783:
+    series = np.unique(y)
 
-series = np.unique(y)
+    delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
+    delta_A= delta_A.final()
 
-delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
-delta_A= delta_A.final()
+    with st.beta_expander("expander"):
+        options  = st.radio('options', 
+                            ['cashflow_hold',
+                             'rebalancing',
+                             'cf_change vs price_change',
+                             'port-value_change vs price_change',
+                             'amount_hold vs amount_mkt' ,
+                             'asset-value_hold vs asset-value_mkt' ,
+                             'cash_hold vs cash_mkt' ,
+                             'sumusd_hold vs sumusd_mkt'] ,index=2 )
 
-with st.beta_expander("expander"):
-    options  = st.radio('options', 
-                        ['cashflow_hold',
-                         'rebalancing',
-                         'cf_change vs price_change',
-                         'port-value_change vs price_change',
-                         'amount_hold vs amount_mkt' ,
-                         'asset-value_hold vs asset-value_mkt' ,
-                         'cash_hold vs cash_mkt' ,
-                         'sumusd_hold vs sumusd_mkt'] ,index=2 )
-    
-if options == 'cashflow_hold':plot = ['cf_change' , 'zero_line']
-elif options == 'rebalancing':plot = ['re' , "zero_line"]
-elif options == 'cf_change vs price_change':plot = ['cf_change' ,'price_change' , "zero_line"]
-elif options == 'port-value_change vs price_change':plot = ['pv_change' ,'price_change' , "zero_line"]
-elif options == 'amount_hold vs amount_mkt':plot = ['amount' ,'amount_mkt']
-elif options == 'asset-value_hold vs asset-value_mkt':plot = ['asset_value' ,'assetvalue_mkt']
-elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
-elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
-    
-st.write('x0 :' , 0.45  , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
-st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
-         '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' , round(delta_A['re'][-1] , 2))
-  
-plt.subplots(figsize=(12, 8))
-for i in plot:
-    plt.plot(delta_A[i] , label =i)
-plt.legend()
-st.pyplot()
+    if options == 'cashflow_hold':plot = ['cf_change' , 'zero_line']
+    elif options == 'rebalancing':plot = ['re' , "zero_line"]
+    elif options == 'cf_change vs price_change':plot = ['cf_change' ,'price_change' , "zero_line"]
+    elif options == 'port-value_change vs price_change':plot = ['pv_change' ,'price_change' , "zero_line"]
+    elif options == 'amount_hold vs amount_mkt':plot = ['amount' ,'amount_mkt']
+    elif options == 'asset-value_hold vs asset-value_mkt':plot = ['asset_value' ,'assetvalue_mkt']
+    elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
+    elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
 
-st.write('cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%','   ,   cf_usd :',  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
-st.write('amount :'  , round(delta_A['amount'][-1] , 2) , '   ,   amount_mkt :',  round(delta_A['amount_mkt'][-1] , 2)  )
-st.write('sumusd :'  , round(delta_A['sumusd'][-1] , 2) , '   ,   sumusd_mkt :',  round(delta_A['sumusd_mkt'][-1] , 2)  )
+    st.write('x0 :' , 0.45  , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
+    st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
+             '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' , round(delta_A['re'][-1] , 2))
 
-# _, _ , head , _ ,   = st.beta_columns(4) 
-# head.write('เริ่ม')
-# st.dataframe(delta_A.head(1))
-# _, _ , tail , _ ,   = st.beta_columns(4)
-# tail.write('ล่าสุด')
-# st.dataframe(delta_A.tail(20))
+    plt.subplots(figsize=(12, 8))
+    for i in plot:
+        plt.plot(delta_A[i] , label =i)
+    plt.legend()
+    st.pyplot()
 
-st.dataframe(delta_A['re'])
+    st.write('cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%','   ,   cf_usd :',  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
+    st.write('amount :'  , round(delta_A['amount'][-1] , 2) , '   ,   amount_mkt :',  round(delta_A['amount_mkt'][-1] , 2)  )
+    st.write('sumusd :'  , round(delta_A['sumusd'][-1] , 2) , '   ,   sumusd_mkt :',  round(delta_A['sumusd_mkt'][-1] , 2)  )
+
+    # _, _ , head , _ ,   = st.beta_columns(4) 
+    # head.write('เริ่ม')
+    # st.dataframe(delta_A.head(1))
+    # _, _ , tail , _ ,   = st.beta_columns(4)
+    # tail.write('ล่าสุด')
+    # st.dataframe(delta_A.tail(20))
+    st.dataframe(delta_A['re'].tail(20)
+    st.stop()
+
+else:st.stop()        
+                
