@@ -133,7 +133,8 @@ series = np.unique(y)
 delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
 
-st.radio('Radio', ['pv_change , price_change',
+st.radio('Radio', [
+    ['pv_change , price_change'],
     'amount vs amount_mkt' ,
     'asset-value_hold vs asset-value_mkt' ,
     'cash_hold vs cash_mkt' ,
