@@ -133,7 +133,7 @@ series = np.unique(y)
 delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
 
-_ = delta_A[['cf_change' ,'0' ]] ; _.columns = ['1: cf_%', "2: zero_line"] 
+_ = delta_A[['cf_change' ,'cf_usd' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 # _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
 _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"] 
