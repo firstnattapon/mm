@@ -135,17 +135,15 @@ delta_A= delta_A.final()
 
 options  = st.radio('options', 
                     ['cashflow_hold',
-                     'rebalancing'
+                     'rebalancing',
                      'port-value_change vs price_change',
                      'amount_hold vs amount_mkt' ,
                      'asset-value_hold vs asset-value_mkt' ,
                      'cash_hold vs cash_mkt' ,
                      'sumusd_hold vs sumusd_mkt'] ,index=0 )
     
-if options == 'cashflow_hold':
-    plot = ['cf_change' ,'price_change']
-elif options == 'rebalancing':
-    plot = ['re']
+if options == 'cashflow_hold':plot = ['cf_change' ,'price_change']
+elif options == 'rebalancing':plot = ['re']
 elif options == 'port-value_change vs price_change':
     plot = ['pv_change' ,'price_change']
 elif options == 'amount_hold vs amount_mkt':
