@@ -133,8 +133,8 @@ series = np.unique(y)
 delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
 
-st.radio('Radio', [1,2,3] , 3 )
-
+st.radio('Radio', ['pv_change , price_change', 2 , 3 ] ,  index=0 )
+ 
 
 # _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 # st.line_chart(_)
