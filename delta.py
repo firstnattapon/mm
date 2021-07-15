@@ -138,7 +138,7 @@ st.line_chart(_)
 _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
 
-st.write('x0 :' , x , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
+st.write('x0 :' , 0.45  , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
 st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
          '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' , round(delta_A['re'][-1] , 2))
 st.write('cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%','   ,   cf_usd :',  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
