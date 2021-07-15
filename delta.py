@@ -138,7 +138,7 @@ st.radio('Radio', [
     'amount_hold vs amount_mkt' ,
     'asset-value_hold vs asset-value_mkt' ,
     'cash_hold vs cash_mkt' ,
-    'sumusd_hold vs sumusd_mkt' ,index=0 )
+    'sumusd_hold vs sumusd_mkt'] ,index=0 )
     
 
 # _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
