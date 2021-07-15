@@ -134,8 +134,8 @@ delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , time
 delta_A= delta_A.final()
 
 st.radio('Radio', [
-    ['pv_change , price_change'],
-    'amount vs amount_mkt' ,
+    'pv_change vs price_change'],
+    'amount_hold vs amount_mkt' ,
     'asset-value_hold vs asset-value_mkt' ,
     'cash_hold vs cash_mkt' ,
     'sumusd_hold vs sumusd_mkt' ,index=0 )
