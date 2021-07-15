@@ -108,7 +108,7 @@ class  delta :
         final = self.change()
         final['   :   '] = '   :   '
         final['zero_line'] =  0
-        final['1000'] =  1000
+        final['start_usd'] =  1000
         final['t'] =    final.index.dayofyear
         return final
   
@@ -135,15 +135,16 @@ series = np.unique(y)
 delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
 
-options  = st.radio('options', 
-                    ['cashflow_hold',
-                     'rebalancing',
-                     'cf_change vs price_change',
-                     'port-value_change vs price_change',
-                     'amount_hold vs amount_mkt' ,
-                     'asset-value_hold vs asset-value_mkt' ,
-                     'cash_hold vs cash_mkt' ,
-                     'sumusd_hold vs sumusd_mkt'] ,index=2 )
+with st.beta_expander("options"):
+    options  = st.radio('options', 
+                        ['cashflow_hold',
+                         'rebalancing',
+                         'cf_change vs price_change',
+                         'port-value_change vs price_change',
+                         'amount_hold vs amount_mkt' ,
+                         'asset-value_hold vs asset-value_mkt' ,
+                         'cash_hold vs cash_mkt' ,
+                         'sumusd_hold vs sumusd_mkt'] ,index=2 )
     
 if options == 'cashflow_hold':plot = ['cf_change' , 'zero_line']
 elif options == 'rebalancing':plot = ['re' , "zero_line"]
@@ -152,7 +153,7 @@ elif options == 'port-value_change vs price_change':plot = ['pv_change' ,'price_
 elif options == 'amount_hold vs amount_mkt':plot = ['amount' ,'amount_mkt']
 elif options == 'asset-value_hold vs asset-value_mkt':plot = ['asset_value' ,'assetvalue_mkt']
 elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
-elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "1000"]
+elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
   
 plt.subplots(figsize=(12, 8))
 for i in plot:
