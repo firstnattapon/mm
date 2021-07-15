@@ -171,7 +171,6 @@ if x == 0.9237416727562783 and y[-1] == 2660.0 :
     st.write('amount :'  , round(delta_A['amount'][-1] , 2) , '   ,   amount_mkt :',  round(delta_A['amount_mkt'][-1] , 2)  )
     st.write('sumusd :'  , round(delta_A['sumusd'][-1] , 2) , '   ,   sumusd_mkt :',  round(delta_A['sumusd_mkt'][-1] , 2)  )
 
-
     with st.beta_expander("data"):
         _, _ , head , _ ,   = st.beta_columns(4) 
         head.write('เริ่ม')
@@ -180,7 +179,7 @@ if x == 0.9237416727562783 and y[-1] == 2660.0 :
         tail.write('ล่าสุด')
         st.dataframe(delta_A.tail(1))
         _, _ , re , _ ,   = st.beta_columns(4)
-        st.dataframe(delta_A['re'].tail(5))
+        st.dataframe(delta_A['close' , 're'].tail(5))
         
     st.stop()
 
