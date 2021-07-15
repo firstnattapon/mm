@@ -60,7 +60,7 @@ class  delta :
                   nav_data.iloc[i, idx_amount] =   np.where(nav_data.iloc[i, idx_perdit] == 1  and
                                                             (abs((nav_data.iloc[i-1, idx_amount] * nav_data.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
                                                              / (self.usd * self.fix_value)) >= self.minimum_re,
-                                                            (self.usd * self.fix_value) / nav_data.iloc[i , idx_close],  nav_data.iloc[i-1, idx_amount])                    
+                                                            (self.usd * self.fix_value) / nav_data.iloc[i , idx_close] ,  nav_data.iloc[i-1, idx_amount])                    
                 
         nav_data['asset_value'] =  (nav_data['close']*nav_data['amount']) 
 
@@ -117,8 +117,6 @@ class  delta :
         final['zero_line'] =  0
         final['start_usd'] =  self.usd
         final['t'] =    final.index.dayofyear
-        
-        final = final[:-1] ###
         
         return final
   
