@@ -138,8 +138,7 @@ _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2:
 st.line_chart(_)
 
 st.write('data :' , len(delta_A))
-st.write('')
-st.write('cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%' , ', cf_usd :',  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$' ,)
+st.write('cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%' , ', cf_usd :',  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
 st.write('')
 
 _, _ , head , _ ,   = st.beta_columns(4) 
