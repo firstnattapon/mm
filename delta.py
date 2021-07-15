@@ -110,6 +110,9 @@ class  delta :
         final['zero_line'] =  0
         final['start_usd'] =  self.usd
         final['t'] =    final.index.dayofyear
+        
+        final = final[:-1] ###
+        
         return final
   
 #  streamlit
