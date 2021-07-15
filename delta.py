@@ -142,15 +142,15 @@ options  = st.radio('options',
                      'cash_hold vs cash_mkt' ,
                      'sumusd_hold vs sumusd_mkt'] ,index=0 )
     
-if options == 'cashflow_hold':plot = ['cf_change']
-elif options == 'rebalancing':plot = ['re']
-elif options == 'port-value_change vs price_change':plot = ['pv_change' ,'price_change']
-elif options == 'amount_hold vs amount_mkt':plot = ['amount' ,'amount_mkt']
-elif options == 'asset-value_hold vs asset-value_mkt':plot = ['asset_value' ,'assetvalue_mkt']
-elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
-elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt']
+if options == 'cashflow_hold':plot = 'cf_change'
+elif options == 'rebalancing':plot = 're'
+elif options == 'port-value_change vs price_change':plot = 'pv_change' ,'price_change'
+elif options == 'amount_hold vs amount_mkt':plot = 'amount' ,'amount_mkt'
+elif options == 'asset-value_hold vs asset-value_mkt':plot = 'asset_value' ,'assetvalue_mkt'
+elif options == 'cash_hold vs cash_mkt':plot = 'cash' ,'cash_mkt'
+elif options == 'sumusd_hold vs sumusd_mkt':plot = 'sumusd' ,'sumusd_mkt'
     
-_ = delta_A[plot] #  ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+_ = delta_A[[plot , "0"]  #; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 
 # _ = delta_A[['cf_change' ,'price_change' ,'0' ]] #  ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
@@ -168,4 +168,3 @@ st.write('sumusd :'  , round(delta_A['sumusd'][-1] , 2) , '   ,   sumusd_mkt :',
 # _, _ , tail , _ ,   = st.beta_columns(4)
 # tail.write('ล่าสุด')
 # st.dataframe(delta_A.tail(20))
-st.dataframe(delta_A)
