@@ -157,7 +157,7 @@ elif options == 'cash_hold vs cash_mkt':
 elif options == 'sumusd_hold vs sumusd_mkt':
     plot = ['sumusd' ,'sumusd_mkt']
     
- _ = delta_A[plot] #  ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+_ = delta_A[plot] #  ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 
 _ = delta_A[['cf_change' ,'price_change' ,'0' ]] #  ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
