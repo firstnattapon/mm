@@ -107,7 +107,7 @@ class  delta :
     def  final (self):
         final = self.change()
         final['   :   '] = '   :   '
-        final['0'] =  0
+        final['zero_line'] =  0
         final['1000'] =  1000
         final['t'] =    final.index.dayofyear
         return final
@@ -145,10 +145,10 @@ options  = st.radio('options',
                      'cash_hold vs cash_mkt' ,
                      'sumusd_hold vs sumusd_mkt'] ,index=2 )
     
-if options == 'cashflow_hold':plot = ['cf_change' , '0']
-elif options == 'rebalancing':plot = ['re' , "0"]
-elif options == 'cf_change vs price_change':plot = ['cf_change' ,'price_change' , "0"]
-elif options == 'port-value_change vs price_change':plot = ['pv_change' ,'price_change' , "0"]
+if options == 'cashflow_hold':plot = ['cf_change' , 'zero_line']
+elif options == 'rebalancing':plot = ['re' , "zero_line"]
+elif options == 'cf_change vs price_change':plot = ['cf_change' ,'price_change' , "zero_line"]
+elif options == 'port-value_change vs price_change':plot = ['pv_change' ,'price_change' , "zero_line"]
 elif options == 'amount_hold vs amount_mkt':plot = ['amount' ,'amount_mkt']
 elif options == 'asset-value_hold vs asset-value_mkt':plot = ['asset_value' ,'assetvalue_mkt']
 elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
