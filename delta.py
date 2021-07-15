@@ -108,7 +108,7 @@ class  delta :
         final = self.change()
         final['   :   '] = '   :   '
         final['zero_line'] =  0
-        final['start_usd'] =  1000
+        final['start_usd'] =  self.usd
         final['t'] =    final.index.dayofyear
         return final
   
@@ -135,7 +135,7 @@ series = np.unique(y)
 delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
 
-with st.beta_expander("Expander"):
+with st.beta_expander("+"):
     options  = st.radio('options', 
                         ['cashflow_hold',
                          'rebalancing',
