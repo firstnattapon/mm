@@ -7,9 +7,9 @@ import streamlit as st
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 from datetime import datetime
-# st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_option('deprecation.showPyplotGlobalUse', False)
 import datetime
-# plt.style.use('ggplot')
+plt.style.use('ggplot')
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'ALPHA-PERP', timeframe = '15m' 
@@ -143,8 +143,8 @@ options  = st.radio('options',
                      'cash_hold vs cash_mkt' ,
                      'sumusd_hold vs sumusd_mkt'] ,index=0 )
     
-if options == 'cashflow_hold':plot = ['cf_change']
-elif options == 'rebalancing':plot = ['re']
+if options == 'cashflow_hold':plot = ['cf_change' , '0']
+elif options == 'rebalancing':plot = ['re' , "0"]
 elif options == 'port-value_change vs price_change':plot = ['pv_change' ,'price_change']
 elif options == 'amount_hold vs amount_mkt':plot = ['amount' ,'amount_mkt']
 elif options == 'asset-value_hold vs asset-value_mkt':plot = ['asset_value' ,'assetvalue_mkt']
