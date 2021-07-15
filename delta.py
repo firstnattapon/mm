@@ -143,7 +143,7 @@ options  = st.radio('options',
                      'amount_hold vs amount_mkt' ,
                      'asset-value_hold vs asset-value_mkt' ,
                      'cash_hold vs cash_mkt' ,
-                     'sumusd_hold vs sumusd_mkt'] ,index=3 )
+                     'sumusd_hold vs sumusd_mkt'] ,index=2 )
     
 if options == 'cashflow_hold':plot = ['cf_change' , '0']
 elif options == 'rebalancing':plot = ['re' , "0"]
