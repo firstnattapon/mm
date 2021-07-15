@@ -131,6 +131,7 @@ for it in range(9999):
     y.append(np.around( x * max))
     
 if x == 0.9237416727562783 and y[-1] == 2660.0 :
+    st.success('Success')
     
     series = np.unique(y)
     delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
