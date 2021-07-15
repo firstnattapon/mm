@@ -154,6 +154,10 @@ elif options == 'amount_hold vs amount_mkt':plot = ['amount' ,'amount_mkt']
 elif options == 'asset-value_hold vs asset-value_mkt':plot = ['asset_value' ,'assetvalue_mkt']
 elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
 elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
+    
+st.write('x0 :' , 0.45  , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
+st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
+         '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' , round(delta_A['re'][-1] , 2))
   
 plt.subplots(figsize=(12, 8))
 for i in plot:
@@ -161,9 +165,6 @@ for i in plot:
 plt.legend()
 st.pyplot()
 
-st.write('x0 :' , 0.45  , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
-st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
-         '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' , round(delta_A['re'][-1] , 2))
 st.write('cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%','   ,   cf_usd :',  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
 st.write('amount :'  , round(delta_A['amount'][-1] , 2) , '   ,   amount_mkt :',  round(delta_A['amount_mkt'][-1] , 2)  )
 st.write('sumusd :'  , round(delta_A['sumusd'][-1] , 2) , '   ,   sumusd_mkt :',  round(delta_A['sumusd_mkt'][-1] , 2)  )
