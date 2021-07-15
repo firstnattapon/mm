@@ -135,7 +135,7 @@ series = np.unique(y)
 delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
 
-with st.beta_expander("options"):
+with st.beta_expander("Expander"):
     options  = st.radio('options', 
                         ['cashflow_hold',
                          'rebalancing',
