@@ -131,8 +131,8 @@ for it in range(9999):
     y.append(np.around( x * max))
     
 if x == 0.9237416727562783:
+    
     series = np.unique(y)
-
     delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
     delta_A= delta_A.final()
 
@@ -179,5 +179,6 @@ if x == 0.9237416727562783:
     st.dataframe(delta_A['re'].tail(20)
     st.stop()
 
-else:st.stop()        
-                
+else:
+    st.stop()        
+               
