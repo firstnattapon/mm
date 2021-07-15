@@ -167,4 +167,5 @@ st.write('sumusd :'  , round(delta_A['sumusd'][-1] , 2) , '   ,   sumusd_mkt :',
 # st.dataframe(delta_A.head(1))
 # _, _ , tail , _ ,   = st.beta_columns(4)
 # tail.write('ล่าสุด')
-st.dataframe(delta_A.tail(20))
+# st.dataframe(delta_A.tail(20))
+st.dataframe(delta_A)
