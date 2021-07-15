@@ -129,6 +129,8 @@ n = 9999
 for it in range(9999):
     x = mu * x * (1.0 - x)
     y.append(np.around( x * max))
+    
+st.write(x)
 
 series = np.unique(y)
 
