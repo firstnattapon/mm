@@ -108,6 +108,7 @@ class  delta :
         final = self.change()
         final['   :   '] = '   :   '
         final['0'] =  0
+        final['1000'] =  1000
         final['t'] =    final.index.dayofyear
         return final
   
@@ -149,7 +150,7 @@ elif options == 'port-value_change vs price_change':plot = ['pv_change' ,'price_
 elif options == 'amount_hold vs amount_mkt':plot = ['amount' ,'amount_mkt']
 elif options == 'asset-value_hold vs asset-value_mkt':plot = ['asset_value' ,'assetvalue_mkt']
 elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
-elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt']
+elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "1000"]
   
 plt.subplots(figsize=(12, 8))
 for i in plot:
