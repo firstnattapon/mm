@@ -176,7 +176,7 @@ if x == 0.9237416727562783:
     # _, _ , tail , _ ,   = st.beta_columns(4)
     # tail.write('ล่าสุด')
     # st.dataframe(delta_A.tail(20))
-    st.dataframe(delta_A['re'].tail(20)
+    st.dataframe(delta_A['re'].tail(20))
     st.stop()
 
 else:
