@@ -133,16 +133,34 @@ series = np.unique(y)
 delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
 delta_A= delta_A.final()
 
-st.radio('Radio', 
-         ['pv_change vs price_change',
-         'amount_hold vs amount_mkt' ,
-         'asset-value_hold vs asset-value_mkt' ,
-         'cash_hold vs cash_mkt' ,
-         'sumusd_hold vs sumusd_mkt'] ,index=0 )
+options  = st.radio('options', 
+                    ['cashflow_hold',
+                     'rebalancing'
+                     'port-value_change vs price_change',
+                     'amount_hold vs amount_mkt' ,
+                     'asset-value_hold vs asset-value_mkt' ,
+                     'cash_hold vs cash_mkt' ,
+                     'sumusd_hold vs sumusd_mkt'] ,index=0 )
     
+if options == 'cashflow_hold':
+    plot = ['cf_change' ,'price_change']
+elif options == 'rebalancing':
+    plot = ['re']
+elif options == 'port-value_change vs price_change':
+    plot = ['pv_change' ,'price_change']
+elif options == 'amount_hold vs amount_mkt'
+    plot = ['amount' ,'amount_mkt']
+elif options == 'asset-value_hold vs asset-value_mkt'
+    plot = ['asset_value' ,'assetvalue_mkt']
+elif options == 'cash_hold vs cash_mkt'
+    plot = ['cash' ,'cash_mkt']
+elif options == 'sumusd_hold vs sumusd_mkt'
+    plot = ['sumusd' ,'sumusd_mkt']
+    
+ _ = delta_A[plot] #  ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 
-# _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
-# st.line_chart(_)
+_ = delta_A[['cf_change' ,'price_change' ,'0' ]] #  ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+st.line_chart(_)
 
 st.write('x0 :' , 0.45  , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
 st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
