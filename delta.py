@@ -135,7 +135,9 @@ delta_A= delta_A.final()
 
 st.radio('Radio', [
     'pv_change vs price_change',
-    2 ,
+    'amount_hold vs amount_mkt' ,
+    'sumusd_hold vs sumusd_mkt' ,
+
     3 ] ,  index=0 )
  
 
