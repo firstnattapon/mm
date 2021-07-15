@@ -46,14 +46,21 @@ class  delta :
         return series
 
     def  nav (self):
+        idx_amount = 3 ; idx_close = 0 ; idx_perdit = 2
+        
         nav_data = self.series()
         nav_data['amount'] =  np.nan
         for i in range(len(nav_data)): # amount
             if i == 0 :
-                nav_data.iloc[i, 3] =   (self.usd * self.fix_value)  / nav_data.iloc[i, 0]
+                nav_data.iloc[i, idx_amount] =   (self.usd * self.fix_value)  / nav_data.iloc[i, idx_close]
             else :
-                nav_data.iloc[i, 3] =   np.where(nav_data.iloc[i, 2] == 0 ,  nav_data.iloc[i-1, 3] , 
-                                                (self.usd * self.fix_value) / nav_data.iloc[i, 0])          
+#                 nav_data.iloc[i, idx_amount] =   np.where(nav_data.iloc[i, idx_perdit] == 0 ,  nav_data.iloc[i-1, idx_amount] , 
+#                                                 (self.usd * self.fix_value) / nav_data.iloc[i , idx_close]) 
+                
+                  nav_data.iloc[i, idx_amount] =   np.where(nav_data.iloc[i, idx_perdit] == 1  and
+                                                            (abs((nav_data.iloc[i-1, idx_amount] * nav_data.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
+                                                             / (self.usd * self.fix_value)) >= self.minimum_re,
+                                                            (self.usd * self.fix_value) / nav_data.iloc[i , idx_close],  nav_data.iloc[i-1, idx_amount])                    
                 
         nav_data['asset_value'] =  (nav_data['close']*nav_data['amount']) 
 
@@ -62,8 +69,8 @@ class  delta :
             if i == 0 :
                 nav_data.iloc[i, 5] =    0
             else :
-                nav_data.iloc[i, 5] =    np.where(nav_data.iloc[i, 2] == 1 and 
-                                                  (abs((nav_data.iloc[i-1, 3] * nav_data.iloc[i, 0]) - (self.usd * self.fix_value)) 
+                nav_data.iloc[i, 5] =    np.where(nav_data.iloc[i, idx_perdit] == 1 and 
+                                                  (abs((nav_data.iloc[i-1, idx_amount] * nav_data.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
                                                   / (self.usd * self.fix_value)) >= self.minimum_re
                                                   , (nav_data.iloc[i-1, 3] * nav_data.iloc[i, 0]) -  (self.usd * self.fix_value) , 0)
 
