@@ -171,13 +171,15 @@ if x == 0.9237416727562783:
     st.write('sumusd :'  , round(delta_A['sumusd'][-1] , 2) , '   ,   sumusd_mkt :',  round(delta_A['sumusd_mkt'][-1] , 2)  )
 
 
-    with st.beta_expander("expander"):
+    with st.beta_expander("data"):
         _, _ , head , _ ,   = st.beta_columns(4) 
         head.write('เริ่ม')
         st.dataframe(delta_A.head(1))
         _, _ , tail , _ ,   = st.beta_columns(4)
         tail.write('ล่าสุด')
-        st.dataframe(delta_A['re'].tail(20))
+        st.dataframe(delta_A.tail(1))
+        _, _ , re , _ ,   = st.beta_columns(4)
+        st.dataframe(delta_A['re'].tail(5))
         
     st.stop()
 
