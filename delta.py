@@ -113,22 +113,19 @@ class  delta :
         return change_data
 
     def  final (self):
+        idx_amount = 3 ; idx_close = 0 ; idx_perdit = 2  ;  idx_re = 5  ;  idx_cash = 6 
+
         final = self.change()
         final['   :   '] = '   :   '
         final['zero_line'] =  0
         final['start_usd'] =  self.usd
         final['t'] =    final.index.dayofyear
-        
+        final['diff'] = (abs((diff.iloc[i-1, idx_amount] * diff.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
+                / (self.usd * self.fix_value))
+
         return final
     
-    @property
-    def diff (self):
-        idx_amount = 3 ; idx_close = 0 ; idx_perdit = 2  ;  idx_re = 5  ;  idx_cash = 6 
-        diff = self.final()
-        diff_usd = (abs((diff.iloc[i-1, idx_amount] * diff.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
-                / (self.usd * self.fix_value))
-        
-        return diff
+
   
 #  streamlit
 col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
@@ -181,7 +178,7 @@ if x == 0.9745433798336174 and y[-1] == 1402.0 :
 
     st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
-             round(delta_A['re'][-1] , 2) , '   ,   diff :' , delta_A.diff
+             round(delta_A['re'][-1] , 2) , '   ,   diff :' , delta_A['diff'][-1]
             )
 
     plt.subplots(figsize=(12, 8))
