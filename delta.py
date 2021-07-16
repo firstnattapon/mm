@@ -121,14 +121,13 @@ class  delta :
         final['start_usd'] =  self.usd
         final['t'] =    final.index.dayofyear
         
-        for i in range(len(final)): # amount
+        for i in range(len(final)): 
             final['diff'] = (abs((final.iloc[i-1, idx_amount] * final.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
                     / (self.usd * self.fix_value))
 
         return final
     
 
-  
 #  streamlit
 col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
 pair_data = col1.text_input("pair_data", "CAKE-PERP")
@@ -162,7 +161,7 @@ if x == 0.9745433798336174 and y[-1] == 1402.0 :
         options  = st.radio('options', 
                             ['cashflow_hold',
                              'rebalancing',
-                             'cf_change vs price_change',
+                             'cf_change vs price_change vs port-value_change',
                              'port-value_change vs price_change',
                              'amount_hold vs amount_mkt' ,
                              'asset-value_hold vs asset-value_mkt' ,
@@ -171,7 +170,7 @@ if x == 0.9745433798336174 and y[-1] == 1402.0 :
 
     if options == 'cashflow_hold':plot = ['cf_change' , 'zero_line']
     elif options == 'rebalancing':plot = ['re' , "zero_line"]
-    elif options == 'cf_change vs price_change':plot = ['cf_change' ,'price_change' , "zero_line"]
+    elif options == 'cf_change vs price_change vs port-value_change' :plot = ['cf_change' ,'price_change', 'pv_change' , "zero_line"]
     elif options == 'port-value_change vs price_change':plot = ['pv_change' ,'price_change' , "zero_line"]
     elif options == 'amount_hold vs amount_mkt':plot = ['amount' ,'amount_mkt']
     elif options == 'asset-value_hold vs asset-value_mkt':plot = ['asset_value' ,'assetvalue_mkt']
