@@ -129,7 +129,7 @@ class  delta :
     
 
 #  streamlit
-col1, col2 , col3 , col4 , col5  , col6 = st.beta_columns(5)
+col1, col2 , col3 , col4 , col5  , col6 = st.beta_columns(6)
 pair_data = col1.text_input("pair_data", "CAKE-PERP")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
