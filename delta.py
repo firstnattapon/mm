@@ -122,11 +122,12 @@ class  delta :
         return final
   
 #  streamlit
-col1, col2 , col3 , col4 , col5 , col6  = st.beta_columns(6)
+col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
 pair_data = col1.text_input("pair_data", "CAKE-PERP")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "15m")
+minimum_re = col5.number_input("minimum_re" , 0.005) 
 
 col8, col9   = st.beta_columns(2)
 start = col8.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
@@ -145,7 +146,8 @@ if x == 0.9745433798336174 and y[-1] == 1402.0 :
     st.success('Success')
     
     series = np.unique(y)
-    delta_A = delta(usd = invest , fix_value = fix_value , p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
+    delta_A = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value ,
+                    p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
     delta_A= delta_A.final()
 
     with st.beta_expander("expander"):
