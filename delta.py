@@ -149,7 +149,7 @@ for it in range(9999):
     x = mu * x * (1.0 - x)
     y.append(x)
     
-if x == 0.9745433798336174 and y[-1] = 0.8749972636024641 :
+if x == 0.9745433798336174 and y[-1] == 0.8749972636024641 :
     st.success('Success')
     
     delta_A = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value , max = max , 
