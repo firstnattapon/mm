@@ -202,6 +202,11 @@ if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
         _, _ , re , _ ,   = st.beta_columns(4)
         st.dataframe(delta_A[['close', 'perdit'  , 're']].tail(10))
         
+        
+    with st.beta_expander("series_num"):
+        st.write( delta_x.series_num)
+        
+
     st.stop()
 
 else:
