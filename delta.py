@@ -12,8 +12,8 @@ import datetime
 plt.style.use('ggplot')
 
 class  delta :
-    def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'ALPHA-PERP', timeframe = '15m' 
-                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [179 , 193]):
+    def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'CAKE-PERP', timeframe = '15m' 
+                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [197 , 212]):
         self.usd    = usd
         self.fix_value  = fix_value
         self.p_data = p_data
@@ -28,7 +28,7 @@ class  delta :
         ohlcv = exchange.fetch_ohlcv(self.p_data, self.timeframe, limit=self.limit)
         ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
         df = pd.DataFrame(ohlcv)
-        df.t = df.t.apply(lambda x: datetime.datetime.fromtimestamp(x))
+        df.t = df.t.apply(lambda x: datetime.fromtimestamp(x))
         df = df.set_index(df['t'])
         df.t = df.index.dayofyear
         df = df.loc[df.t >= self.start_end[0]]
@@ -46,7 +46,7 @@ class  delta :
         return series
 
     def  nav (self):
-        idx_amount = 3 ; idx_close = 0 ; idx_perdit = 2
+        idx_amount = 3 ; idx_close = 0 ; idx_perdit = 2  ;  idx_re = 5  ;  idx_cash = 6 
         
         nav_data = self.series()
         nav_data['amount'] =  np.nan
@@ -54,9 +54,7 @@ class  delta :
             if i == 0 :
                 nav_data.iloc[i, idx_amount] =   (self.usd * self.fix_value)  / nav_data.iloc[i, idx_close]
             else :
-#                 nav_data.iloc[i, idx_amount] =   np.where(nav_data.iloc[i, idx_perdit] == 0 ,  nav_data.iloc[i-1, idx_amount] , 
-#                                                 (self.usd * self.fix_value) / nav_data.iloc[i , idx_close]) 
-                
+
                   nav_data.iloc[i, idx_amount] =   np.where(nav_data.iloc[i, idx_perdit] == 1  and
                                                             (abs((nav_data.iloc[i-1, idx_amount] * nav_data.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
                                                              / (self.usd * self.fix_value)) >= self.minimum_re,
@@ -67,47 +65,50 @@ class  delta :
         nav_data['re'] =  np.nan
         for i in range(len(nav_data)): # re
             if i == 0 :
-                nav_data.iloc[i, 5] =    0
+                nav_data.iloc[i, idx_re] =    0
             else :
-                nav_data.iloc[i, 5] =    np.where(nav_data.iloc[i, idx_perdit] == 1 and 
+                nav_data.iloc[i, idx_re] =    np.where(nav_data.iloc[i, idx_perdit] == 1 and 
                                                   (abs((nav_data.iloc[i-1, idx_amount] * nav_data.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
                                                   / (self.usd * self.fix_value)) >= self.minimum_re
-                                                  , (nav_data.iloc[i-1, 3] * nav_data.iloc[i, 0]) -  (self.usd * self.fix_value) , 0)
+                                                  , (nav_data.iloc[i-1, idx_amount] * nav_data.iloc[i, idx_close]) -  (self.usd * self.fix_value) , 0)
 
         nav_data['cash'] =  np.nan
         for i in range(len(nav_data)): # cash
             if i == 0 :
-                nav_data.iloc[i, 6] =    (self.usd * self.fix_value)
+                nav_data.iloc[i, idx_cash] =    (self.usd * self.fix_value)
             else :
-                nav_data.iloc[i, 6] =   (nav_data.iloc[i-1, 6] + nav_data.iloc[i, 5] )
+                nav_data.iloc[i, idx_cash] =   (nav_data.iloc[i-1, idx_cash] + nav_data.iloc[i, idx_re] )
 
         nav_data['sumusd'] =  (nav_data['cash'] + nav_data['asset_value'])
 
         return nav_data
 
     def  mkt (self):
+        idx_close = 0 ; idx_cashmkt = 9
         mkt_data  = self.nav()
         mkt_data[':'] = ':'
         mkt_data['cash_mkt'] =  (self.usd * self.fix_value)
-        mkt_data['amount_mkt'] =   (mkt_data.iloc[0, 9]  / mkt_data.iloc[0, 0])
+        mkt_data['amount_mkt'] =   (mkt_data.iloc[0, idx_cashmkt]  / mkt_data.iloc[0, idx_close])
         mkt_data['assetvalue_mkt'] =  mkt_data['close'] * mkt_data['amount_mkt']
         mkt_data['sumusd_mkt'] = (mkt_data['assetvalue_mkt']  + mkt_data['cash_mkt'])
 
         return mkt_data
 
     def cf (self):
+        idx_sumusd = 7 
         cf_data = self.mkt()
         cf_data[' : '] = ' : '
         cf_data['cf_usd'] =   cf_data['sumusd']  - cf_data['sumusd_mkt']
-        cf_data['cf_change'] =  (cf_data['cf_usd'] /  cf_data.iloc[0 , 7]) * 100
+        cf_data['cf_change'] =  (cf_data['cf_usd'] /  cf_data.iloc[0 , idx_sumusd]) * 100
 
         return cf_data
 
     def change (self):
+        idx_sumusd = 7  ; idx_sumusdmkt = 12
         change_data = self.cf()
         change_data['  :  '] = '  :  '
-        change_data['price_change'] =   ((change_data['sumusd_mkt'] - change_data.iloc[0, 12]) / change_data.iloc[0, 12]) * 100
-        change_data['pv_change']  = ((change_data['sumusd'] - change_data.iloc[0 , 7] ) / change_data.iloc[0 , 7]) *100
+        change_data['price_change'] =   ((change_data['sumusd_mkt'] - change_data.iloc[0, idx_sumusdmkt]) / change_data.iloc[0, idx_sumusdmkt]) * 100
+        change_data['pv_change']  = ((change_data['sumusd'] - change_data.iloc[0 , idx_sumusd] ) / change_data.iloc[0 , idx_sumusd]) *100
 
         return change_data
 
@@ -126,19 +127,19 @@ pair_data = col1.text_input("pair_data", "CAKE-PERP")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "15m")
-start = col5.date_input('start' , datetime.date(2021,7,1)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
+start = col5.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
 end = col6.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
 
 y = []
-x = 0.45 
-mu = 3.97 
-max = 2880
+x = 0.60
+mu = 3.97
+max = 1439
 n = 9999
 for it in range(9999):
     x = mu * x * (1.0 - x)
     y.append(np.around( x * max))
     
-if x == 0.9237416727562783 and y[-1] == 2660.0 :
+if x == 0.9745433798336174 and y[-1] == 1402.0 :
     st.success('Success')
     
     series = np.unique(y)
