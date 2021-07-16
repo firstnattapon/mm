@@ -179,7 +179,7 @@ if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
     st.write('data :' , delta_A['index'][-1] , 
              
              
-             '   ,   next_re :' ,  [i  if i > delta_A['index'][-1] else 0  for i in delta_x.series_num]  ,
+             '   ,   next_re :' ,  [i  if i > delta_A['index'][-1] else np.nan  for i in delta_x.series_num]  ,
 
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
