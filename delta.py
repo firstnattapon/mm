@@ -12,14 +12,14 @@ import datetime
 plt.style.use('ggplot')
 
 class  delta :
-    def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'CAKE-PERP', timeframe = '15m' 
-                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [197 , 212]):
+    def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'CAKE-PERP', timeframe = '15m'  , max  = 1439  
+                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [182 , 196]):
         self.usd    = usd
         self.fix_value  = fix_value
         self.p_data = p_data
         self.timeframe = timeframe
         self.limit = limit
-        self.series_num = series_num
+        self.series_num =  np.array( [np.unique(np.around( x * max)) for x in series_num])
         self.minimum_re = minimum_re
         self.start_end = start_end
 
@@ -129,32 +129,31 @@ class  delta :
     
 
 #  streamlit
-col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
+col1, col2 , col3 , col4 , col5  , col6 = st.beta_columns(5)
 pair_data = col1.text_input("pair_data", "CAKE-PERP")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "15m")
-minimum_re = float(col5.text_input("minimum_re" , "0.005"))
+max = int(col5.text_input("max" , "1439"))
+minimum_re = float(col6.text_input("minimum_re" , "0.005"))
 
-col6, col7   = st.beta_columns(2)
-start = col6.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
-end = col7.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
+col7, col8   = st.beta_columns(2)
+start = col7.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
+end = col8.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
 
 y = []
 x = 0.60
 mu = 3.97
-max = 1439
 n = 9999
 for it in range(9999):
     x = mu * x * (1.0 - x)
-    y.append(np.around( x * max))
+    y.append(x)
     
-if x == 0.9745433798336174 and y[-1] == 1402.0 :
+if x == 0.9745433798336174 :
     st.success('Success')
     
-    series = np.unique(y)
-    delta_A = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value ,
-                    p_data = pair_data , timeframe =  timeframe ,series_num = series , start_end =[start , end]) 
+    delta_A = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value , max = max , 
+                    p_data = pair_data , timeframe =  timeframe ,series_num = y , start_end =[start , end]) 
     delta_A= delta_A.final()
 
     with st.beta_expander("expander"):
