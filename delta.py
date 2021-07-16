@@ -127,7 +127,7 @@ pair_data = col1.text_input("pair_data", "CAKE-PERP")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "15m")
-minimum_re = int(col5.text_input("minimum_re" , "0.005"))
+minimum_re = float(col5.text_input("minimum_re" , "0.005"))
 
 col8, col9   = st.beta_columns(2)
 start = col8.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
