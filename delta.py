@@ -130,7 +130,7 @@ class  delta :
 
 #  streamlit
 col1, col2 , col3 , col4 , col5  , col6 = st.beta_columns(6)
-pair_data = col1.text_input("pair_data", "CAKE-PERP")
+pair_data = col1.text_input("pair_data", "ALPHA-PERP")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "15m")
@@ -142,14 +142,14 @@ start = col7.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.
 end = col8.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
 
 y = []
-x = 0.60
-mu = 3.97
+x = 0.95
+mu = 3.50
 n = 9999
 for it in range(9999):
     x = mu * x * (1.0 - x)
     y.append(x)
     
-if x == 0.9745433798336174 :
+if x == 0.9745433798336174 and y[-1] = 0.8749972636024641 :
     st.success('Success')
     
     delta_A = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value , max = max , 
