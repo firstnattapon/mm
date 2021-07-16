@@ -121,7 +121,7 @@ class  delta :
         
         return final
     
-        @property
+    @property
     def diff (self):
         idx_amount = 3 ; idx_close = 0 ; idx_perdit = 2  ;  idx_re = 5  ;  idx_cash = 6 
         diff = self.final()
