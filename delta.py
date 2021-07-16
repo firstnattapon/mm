@@ -170,7 +170,7 @@ if x == 0.9745433798336174 and y[-1] == 1402.0 :
     elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
     elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
 
-    st.write('x0 :' , 0.45  , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
+#     st.write('x0 :' , 0.45  , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
     st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' , round(delta_A['re'][-1] , 2))
 
