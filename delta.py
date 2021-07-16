@@ -130,8 +130,8 @@ timeframe = col4.text_input("timeframe", "15m")
 minimum_re = float(col5.text_input("minimum_re" , "0.005"))
 
 col6, col7 , col8  = st.beta_columns(3)
-start = col6.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
-end = col7.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
+start = col7.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
+end = col8.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
 
 y = []
 x = 0.60
@@ -143,7 +143,7 @@ for it in range(9999):
     y.append(np.around( x * max))
     
 if x == 0.9745433798336174 and y[-1] == 1402.0 :
-    col8.success('Success')
+    col6.success('Success')
     
     series = np.unique(y)
     delta_A = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value ,
