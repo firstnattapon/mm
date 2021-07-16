@@ -152,9 +152,9 @@ for it in range(9999):
 if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
     st.success('Success')
     
-    delta_A = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value , max = max , 
+    delta_x = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value , max = max , 
                     p_data = pair_data , timeframe =  timeframe ,series_num = y , start_end =[start , end]) 
-    delta_A= delta_A.final()
+    delta_A= delta_x.final()
 
     with st.beta_expander("expander"):
         options  = st.radio('options', 
@@ -177,7 +177,7 @@ if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
     elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
 
     st.write('data :' , delta_A['index'][-1] , 
-             '   ,   next_re :' , [ i > delta_A['index'][-1] for i in delta_A.series_num] ,
+             '   ,   next_re :' , [ i > delta_A['index'][-1] for i in delta_x.series_num] ,
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
              round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 )
