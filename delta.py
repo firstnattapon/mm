@@ -19,7 +19,7 @@ class  delta :
         self.p_data = p_data
         self.timeframe = timeframe
         self.limit = limit
-        self.series_num =  np.sort(np.array( [np.unique(np.around( x * max)) for x in series_num]) , axis= 0)
+        self.series_num =  np.array( [np.unique(np.around( x * max)) for x in series_num])
         self.minimum_re = minimum_re
         self.start_end = start_end
 
@@ -206,7 +206,6 @@ if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
     with st.beta_expander("series_num"):
         st.write( delta_x.series_num)
         
-
     st.stop()
 
 else:
