@@ -180,7 +180,7 @@ if x == 0.9745433798336174 and y[-1] == 1402.0 :
 
     st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
-             round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 2 )
+             round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 )
             )
 
     plt.subplots(figsize=(12, 8))
