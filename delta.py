@@ -199,7 +199,7 @@ if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
         tail.write('ล่าสุด')
         st.dataframe(delta_A.tail(1))
         _, _ , re , _ ,   = st.beta_columns(4)
-        st.dataframe(delta_A[['close' , 're']].tail(10))
+        st.dataframe(delta_A[['close', 'perdit'  , 're']].tail(10))
         
     st.stop()
 
