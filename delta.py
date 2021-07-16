@@ -120,7 +120,7 @@ class  delta :
         final['zero_line'] =  0
         final['start_usd'] =  self.usd
         final['t'] =    final.index.dayofyear
-        final['diff'] = (abs((diff.iloc[i-1, idx_amount] * diff.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
+        final['diff'] = (abs((final.iloc[i-1, idx_amount] * final.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
                 / (self.usd * self.fix_value))
 
         return final
