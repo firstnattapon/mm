@@ -19,7 +19,7 @@ class  delta :
         self.p_data = p_data
         self.timeframe = timeframe
         self.limit = limit
-        self.series_num =  np.array( [np.unique(np.around( x * max)) for x in series_num])
+        self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
         self.minimum_re = minimum_re
         self.start_end = start_end
 
