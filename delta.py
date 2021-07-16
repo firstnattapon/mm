@@ -120,6 +120,15 @@ class  delta :
         final['t'] =    final.index.dayofyear
         
         return final
+    
+        @property
+        def diff (self):
+        idx_amount = 3 ; idx_close = 0 ; idx_perdit = 2  ;  idx_re = 5  ;  idx_cash = 6 
+        diff = self.final()
+        diff_usd = (abs((diff.iloc[i-1, idx_amount] * diff.iloc[i, idx_close]) - (self.usd * self.fix_value)) 
+                / (self.usd * self.fix_value))
+        
+        return diff
   
 #  streamlit
 col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
@@ -170,9 +179,10 @@ if x == 0.9745433798336174 and y[-1] == 1402.0 :
     elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
     elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
 
-#     st.write('x0 :' , 0.45  , '   ,   r :' , mu , '   ,   n :' , n  ,'   ,   max :' , max)
     st.write('data :' , len(delta_A) , '   ,   start :' , start , '   ,   end :' , end ,
-             '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' , round(delta_A['re'][-1] , 2))
+             '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
+             round(delta_A['re'][-1] , 2) , '   ,   diff :' , delta_A.diff
+            )
 
     plt.subplots(figsize=(12, 8))
     for i in plot:
