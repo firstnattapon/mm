@@ -177,7 +177,7 @@ if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
     elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
 
     st.write('index :' , delta_A['index'][-1] , 
-             '   ,   next_re :' ,  [i if i > delta_A['index'][-1] else np.nan  for i in int(delta_x.series_num)][0]  ,
+             '   ,   next_re :' ,  [i if i > delta_A['index'][-1] else np.nan  for i in delta_x.series_num][0]  ,
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
              round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 )
