@@ -210,7 +210,7 @@ if 1 :
         
     per_dit = data_vl[data_vl['re'] != 0 ] ; per_dit = per_dit.index
     for pd in per_dit:
-        plt.axvline(x=pd , ymin=0.90 , ymax=1.00, color='r' , alpha = 0.5 )
+        plt.axvline(x=pd , ymin=0.90 , ymax=1.00, color='r' , alpha = 0.1 )
         
     plt.legend()
     st.pyplot()
