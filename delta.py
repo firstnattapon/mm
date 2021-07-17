@@ -206,11 +206,11 @@ if 1 :
    
     data_vl = delta_A[delta_A['index'].isin(delta_x.series_num)] ; vline = data_vl.index
     for vl in vline:
-        plt.axvline(x=vl , ymin=0.0, ymax=0.10, color='k' , linestyle='--')
+        plt.axvline(x=vl , ymin=0.0, ymax=0.10, color='k')
         
     per_dit = data_vl[data_vl['re'] != 0 ] ; per_dit = per_dit.index
     for pd in per_dit:
-        plt.axvline(x=pd , ymin=0.90 , ymax=1.00, color='r'  , linestyle='--')
+        plt.axvline(x=pd , ymin=0.90 , ymax=1.00, color='r' , alpha = 0.5 )
         
     plt.legend()
     st.pyplot()
