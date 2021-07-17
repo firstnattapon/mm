@@ -159,7 +159,7 @@ with st.beta_expander("Feigenbaum "):
 y = []
 x = x0
 mu = λ
-num = N
+num = int(N)
 for it in range(num):
     x = mu * x * (1.0 - x)
     y.append(x)
