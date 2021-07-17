@@ -152,13 +152,15 @@ start = col8.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.
 end = col9.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
 
 with st.beta_expander("Feigenbaum "):
-    pass
+    x0 = st.number_input('x0', min_value=0.0 , max_value=1.0 , value=0.95 , format="%.3f" )    
+    λ = st.number_input('λ', min_value=0.0 , max_value=4.0 , value=3.50 , format="%.3f" )
+    N = st.number_input('N', min_value=0 , max_value=20000 , value=9999) 
 
 y = []
-x = 0.95
-mu = 3.50
-n = 9999
-for it in range(9999):
+x = x0
+mu = λ
+num = N
+for it in range(num):
     x = mu * x * (1.0 - x)
     y.append(x)
     
