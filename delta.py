@@ -205,7 +205,7 @@ if 1 :
      
     vline = delta_A[delta_A['index'] in delta_x.series_num]
     vline = vline.index
-     for vl in vline:
+    for vl in vline:
         plt.axvline(x=vl)
         
     plt.legend()
