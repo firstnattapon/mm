@@ -202,12 +202,11 @@ if 1 :
     plt.subplots(figsize=(12, 8))
     for i in plot:
         plt.plot(delta_A[i] , label =i)
-     
-    vline = delta_A[delta_A['index'] in delta_x.series_num]
-    st.write(vline)
-#     vline = vline.index
-#     for vl in vline:
-#         plt.axvline(x=vl)
+   
+    vline = delta_A[delta_A['index'].isin(delta_x.series_num)]
+    vline = vline.index
+    for vl in vline:
+        plt.axvline(x=vl)
         
     plt.legend()
     st.pyplot()
