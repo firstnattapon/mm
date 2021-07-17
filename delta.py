@@ -208,7 +208,7 @@ if 1 :
     for vl in vline:
         plt.axvline(x=vl , ymin=0.0, ymax=0.02, color='k')
         
-    per_dit = delta_A[delta_A['perdit'] == 1] ; per_dit = per_dit.index
+    per_dit = delta_A[delta_A['perdit'] == 1 and  delta_A['re'] != 0 ] ; per_dit = per_dit.index
     for pd in per_dit:
         plt.axvline(x=pd , ymin=0.98 , ymax=1.00, color='r')
         
