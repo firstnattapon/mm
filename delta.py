@@ -157,9 +157,9 @@ col10, col11    = st.beta_columns(2)
 with col10.beta_expander("Feigenbaum "):
     λ = st.slider('λ', min_value=0.0 , max_value=4.0 , value=3.99 , format="%.2f" )
     N = st.slider('N', min_value=0 , max_value=20000 , value=9999) 
-    x0 = st.slider('x0', min_value=0.0 , max_value=1.0 , value=0.50 , format="%.f" )    
+    X = st.slider('X', min_value=0.0 , max_value=1.0 , value=0.50 , format="%.f" )    
 
-y = [] ; x = x0 ; mu = λ ; num = int(N)
+y = [] ; x = X ; mu = λ ; num = int(N)
 for it in range(num):
     x = mu * x * (1.0 - x)
     y.append(x)
