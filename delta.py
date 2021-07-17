@@ -198,19 +198,23 @@ if 1 :
              round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 )
             )
 
-    
+    # plot
     plt.subplots(figsize=(12, 8))
+    
     for i in plot:
         plt.plot(delta_A[i] , label =i)
    
-    vline = delta_A[delta_A['index'].isin(delta_x.series_num)]
-    vline = vline.index
+    vline = delta_A[delta_A['index'].isin(delta_x.series_num)] ; vline = vline.index
     for vl in vline:
-#         plt.axvline(x=vl)
         plt.axvline(x=vl , ymin=0.0, ymax=0.02, color='k')
-
+        
+    per_dit = delta_A[delta_A['perdit'] == 1] ; per_dit = per_dit.index
+    for pd in per_dit:
+        plt.axvline(x=pd , ymin=0.98 , ymax=1.00, color='r')
+        
     plt.legend()
     st.pyplot()
+    # end_plot
 
     st.write('cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%','   ,   cf_usd :',  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
     st.write('amount :'  , round(delta_A['amount'][-1] , 2) , '   ,   amount_mkt :',  round(delta_A['amount_mkt'][-1] , 2)  )
