@@ -151,6 +151,9 @@ pair_data = col7.selectbox('pair_data', pair_x , 93 )
 start = col8.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
 end = col9.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
 
+with st.beta_expander("Feigenbaum "):
+    pass
+
 y = []
 x = 0.95
 mu = 3.50
