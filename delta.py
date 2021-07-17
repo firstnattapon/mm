@@ -218,7 +218,7 @@ if 1 :
         st.dataframe(delta_A[['close', 'perdit'  , 're']].tail(10))
         
     with st.beta_expander("series_num"):
-        st.code( delta_x.series_num)
+        st.text_area(delta_x.series_num)
         
     st.stop()
 
