@@ -207,7 +207,7 @@ if 1 :
     vline = vline.index
     for vl in vline:
 #         plt.axvline(x=vl)
-        plt.axvline(x=vl , ymin=0.05, ymax=0.95, color='b)
+        plt.axvline(x=vl , color='b)
 
     plt.legend()
     st.pyplot()
