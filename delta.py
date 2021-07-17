@@ -170,7 +170,7 @@ if 1 :
                     p_data = pair_data , timeframe =  timeframe ,series_num = y , start_end =[start , end]) 
     delta_A= delta_x.final()
 
-    with st.beta_expander("expander"):
+    with col11.beta_expander("expander"):
         options  = st.radio('options', 
                             ['cashflow_hold',
                              'rebalancing',
