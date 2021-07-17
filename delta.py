@@ -203,7 +203,10 @@ if 1 :
     for i in plot:
         plt.plot(delta_A[i] , label =i)
      
-#     delta_A = delta_A[delta_A['index'] in ]
+    vline = delta_A[delta_A['index'] in delta_x.series_num]
+    vline = vline.index
+     for vl in vline:
+        plt.axvline(x=vl)
         
     plt.legend()
     st.pyplot()
