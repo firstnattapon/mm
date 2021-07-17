@@ -206,8 +206,9 @@ if 1 :
     vline = delta_A[delta_A['index'].isin(delta_x.series_num)]
     vline = vline.index
     for vl in vline:
-        plt.axvline(x=vl)
-        
+#         plt.axvline(x=vl)
+        plt.vlines(x=vl, ymin=0 , colors='green', ls=':', lw=0.5)
+
     plt.legend()
     st.pyplot()
 
