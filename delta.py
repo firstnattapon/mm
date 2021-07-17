@@ -127,26 +127,29 @@ class  delta :
 
         return final
     
-exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
-e = exchange.load_markets()
-pair_x   = [i for i in e if i[-1] == 'P']
-pair_x   = [i for i in pair_x if i[-9:] != 'BULL/USDT']
-pair_x   = [i for i in pair_x if i[-9:] != 'BEAR/USDT']
-pair_x   = [i for i in pair_x if i[-9:] != 'DOWN/USDT']
-pair_x   = [i for i in pair_x if i[-7:] != 'UP/USDT']
+def getpair ():
+    exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
+    e = exchange.load_markets()
+    pair_x   = [i for i in e if i[-1] == 'P']
+    pair_x   = [i for i in pair_x if i[-9:] != 'BULL/USDT']
+    pair_x   = [i for i in pair_x if i[-9:] != 'BEAR/USDT']
+    pair_x   = [i for i in pair_x if i[-9:] != 'DOWN/USDT']
+    pair_x   = [i for i in pair_x if i[-7:] != 'UP/USDT']
+    return pair_x
+pair_x = getpair()
 
 #  streamlit
-col1, col2 , col3 , col4 , col5  , col6 = st.beta_columns(6)
-pair_data = col1.selectbox('pair_data', pair_x , 93 )    
+col2 , col3 , col4 , col5  , col6 = st.beta_columns(5)
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "15m")
 max = int(col5.text_input("max" , "1439"))
 minimum_re = float(col6.text_input("minimum_re" , "0.005"))
 
-col7, col8   = st.beta_columns(2)
-start = col7.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
-end = col8.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
+col7, col8 , col9   = st.beta_columns(2)
+pair_data = col7.selectbox('pair_data', pair_x , 93 )    
+start = col8.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
+end = col9.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
 
 y = []
 x = 0.95
