@@ -204,11 +204,11 @@ if 1 :
     for i in plot:
         plt.plot(delta_A[i] , label =i)
    
-    vline = delta_A[delta_A['index'].isin(delta_x.series_num)] ; vline = vline.index
+    data_vl = delta_A[delta_A['index'].isin(delta_x.series_num)] ; vline = data_vl.index
     for vl in vline:
         plt.axvline(x=vl , ymin=0.0, ymax=0.02, color='k')
         
-    per_dit = delta_A[delta_A['perdit'] == 1 and  delta_A['re'] != 0 ] ; per_dit = per_dit.index
+    per_dit = data_vl[data_vl['re'] != 0 ] ; per_dit = per_dit.index
     for pd in per_dit:
         plt.axvline(x=pd , ymin=0.98 , ymax=1.00, color='r')
         
