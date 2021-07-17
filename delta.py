@@ -165,7 +165,7 @@ for it in range(num):
     
 # if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
 if 1 :
-    st.success('Success')
+#     st.success('Success')
     
     delta_x = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value , max = max , 
                     p_data = pair_data , timeframe =  timeframe ,series_num = y , start_end =[start , end]) 
