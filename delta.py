@@ -204,9 +204,10 @@ if 1 :
         plt.plot(delta_A[i] , label =i)
      
     vline = delta_A[delta_A['index'] in delta_x.series_num]
-    vline = vline.index
-    for vl in vline:
-        plt.axvline(x=vl)
+    st.write(vline)
+#     vline = vline.index
+#     for vl in vline:
+#         plt.axvline(x=vl)
         
     plt.legend()
     st.pyplot()
