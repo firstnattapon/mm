@@ -151,10 +151,11 @@ pair_data = col7.selectbox('pair_data', pair_x , 93 )
 start = col8.date_input('start' , datetime.date(2021,7,15)) ; start = int(start.timetuple().tm_yday) #; st.sidebar.write(start)
 end = col9.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetuple().tm_yday) #; st.sidebar.write(end)
 
-with st.beta_expander("Feigenbaum "):
+col10 , col11 = st.beta_columns(2)
+with col10.beta_expander("Feigenbaum "):
     λ = st.slider('λ', min_value=0.0 , max_value=4.0 , value=3.99 , format="%.2f" )
     N = st.slider('N', min_value=0 , max_value=20000 , value=9999) 
-    Xo = st.slider('Xo', min_value=0.0 , max_value=1.0 , value=0.50 , format="%.f" )    
+    Xo = st.number_input('Xo', min_value=0.0 , max_value=1.0 , value=0.50 , format="%.2f" )    
 
 y = [] ; x = Xo ; mu = λ ; num = int(N)
 for it in range(num):
