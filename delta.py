@@ -127,10 +127,17 @@ class  delta :
 
         return final
     
+exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
+e = exchange.load_markets()
+pair_x   = [i for i in e if i[-1] == 'P']
+pair_x   = [i for i in pair_x if i[-9:] != 'BULL/USDT']
+pair_x   = [i for i in pair_x if i[-9:] != 'BEAR/USDT']
+pair_x   = [i for i in pair_x if i[-9:] != 'DOWN/USDT']
+pair_x   = [i for i in pair_x if i[-7:] != 'UP/USDT']
 
 #  streamlit
 col1, col2 , col3 , col4 , col5  , col6 = st.beta_columns(6)
-pair_data = col1.text_input("pair_data", "ALPHA-PERP")
+pair_data = col1.selectbox('pair_data', pair_x , 93 )    
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "15m")
@@ -202,7 +209,6 @@ if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
         st.dataframe(delta_A.tail(1))
         _, _ , re , _ ,   = st.beta_columns(4)
         st.dataframe(delta_A[['close', 'perdit'  , 're']].tail(10))
-        
         
     with st.beta_expander("series_num"):
         st.write( delta_x.series_num)
