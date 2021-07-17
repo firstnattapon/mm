@@ -220,7 +220,7 @@ if 1 :
         
     with st.beta_expander("series_num"):
         np.set_printoptions(threshold=sys.maxsize)
-        st.text(delta_x.series_num)
+        st.code(delta_x.series_num)
         
     st.stop()
 
