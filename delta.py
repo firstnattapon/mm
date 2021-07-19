@@ -161,7 +161,8 @@ with col10.beta_expander("Feigenbaum "):
     if linear_x :
         y = linear_x
     else:
-        λ = st.slider('λ', min_value=0.0 , max_value=4.0 , value=3.90  , format="%.3f" )
+        d_λ =  int(col3.text_input("invest" , "3.90"))
+        λ = st.slider('λ', min_value=0.0 , max_value=4.0 , value= d_λ  , format="%.3f" )
         X0 = st.slider('X0', min_value=0.0 , max_value=1.0 , value=0.5  , format="%.2f" )    
         N = st.slider('N', min_value=0 , max_value=20000 , value=1000) 
 
@@ -202,8 +203,7 @@ if 1 :
              '   ,   next_re :' ,  [i if i > delta_A['index'][-1] else np.nan for i in delta_x.series_num][0]  ,
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
-             round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 )
-            )
+             round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 ))
 
     # plot
     plt.subplots(figsize=(12, 8))
