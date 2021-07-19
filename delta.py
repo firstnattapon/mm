@@ -172,11 +172,11 @@ with col10.beta_expander("Feigenbaum "):
                 delta_df = delta_z.final()
                 delta_z.series_num.pop(Index)
                 cf1 = delta_df['cf_usd'][-1]
-                    if cf0 < cf1 :
-                        cf0 =  cf1
-                        print( cf1 )
-                    else:
-                        delta_z.series_num.append(Index)
+                if cf0 < cf1 :
+                    cf0 =  cf1
+                    print( cf1 )
+                else:
+                    delta_z.series_num.append(Index)
         else: break
         y = delta_z.series_num
         
