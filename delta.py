@@ -14,13 +14,16 @@ plt.style.use('ggplot')
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'CAKE-PERP', timeframe = '15m'  , max  = 1439  
-                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [182 , 196]):
+                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [182 , 196] , linear = False):
         self.usd    = usd
         self.fix_value  = fix_value
         self.p_data = p_data
         self.timeframe = timeframe
         self.limit = limit
-        self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
+        if linear = True:
+            self.series_num = np.array([ i for i in range(max)])
+        else:
+            self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
         self.minimum_re = minimum_re
         self.start_end = start_end
 
@@ -154,8 +157,8 @@ end = col9.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetupl
 
 col10 , col11 = st.beta_columns(2)
 with col10.beta_expander("Feigenbaum "):
-    linear = st.checkbox("linear", value = True)
-    if linear :
+    linear_x = st.checkbox("linear", value = False)
+    if linear_x :
         y =  [ i / max  for i in range(max)]
     else:
         λ = st.slider('λ', min_value=0.0 , max_value=4.0 , value=3.90  , format="%.3f" )
@@ -172,7 +175,7 @@ if 1 :
 #     st.success('Success')
     
     delta_x = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value , max = max , 
-                    p_data = pair_data , timeframe =  timeframe ,series_num = y , start_end =[start , end]) 
+                    p_data = pair_data , timeframe =  timeframe ,series_num = y , start_end =[start , end] , linear = linear_x) 
     delta_A= delta_x.final()
 
     with col11.beta_expander("expander"):
