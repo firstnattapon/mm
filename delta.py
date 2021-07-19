@@ -167,7 +167,7 @@ with col10.beta_expander("Feigenbaum "):
     elif max_delta:
         delta_z = delta(p_data = pair_data , start_end=[start  , end] , max= max , linear=True)
         cf0 =  0   ; 
-        for  Index , _  in stqdm(enumerate(delta_z.series_num)):
+        for  Index , _  in stqdm(enumerate(delta_z.series_num) , st_container=st.sidebar):
             if len(delta_z.get_data()) >= Index :
                 delta_df = delta_z.final()
                 delta_z.series_num.pop(Index)
