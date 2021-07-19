@@ -154,14 +154,18 @@ end = col9.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetupl
 
 col10 , col11 = st.beta_columns(2)
 with col10.beta_expander("Feigenbaum "):
-    λ = st.slider('λ', min_value=0.0 , max_value=4.0 , value=3.90  , format="%.3f" )
-    X0 = st.slider('X0', min_value=0.0 , max_value=1.0 , value=0.5  , format="%.2f" )    
-    N = st.slider('N', min_value=0 , max_value=20000 , value=1000) 
+    linear = st.checkbox("linear", value = True)
+    if linear :
+        y =  [ i / max  for i in range(max)]
+    else:
+        λ = st.slider('λ', min_value=0.0 , max_value=4.0 , value=3.90  , format="%.3f" )
+        X0 = st.slider('X0', min_value=0.0 , max_value=1.0 , value=0.5  , format="%.2f" )    
+        N = st.slider('N', min_value=0 , max_value=20000 , value=1000) 
 
-y = [] ; x = X0 ; mu = λ ; num = int(N)
-for it in range(num):
-    x = mu * x * (1.0 - x)
-    y.append(x)
+        y = [] ; x = X0 ; mu = λ ; num = int(N)
+        for it in range(num):
+            x = mu * x * (1.0 - x)
+            y.append(x)
     
 # if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
 if 1 :
