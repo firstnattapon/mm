@@ -161,7 +161,7 @@ with col10.beta_expander("Feigenbaum "):
     if linear_x :
         y = linear_x
     else:
-        d_λ =  int(col3.text_input("invest" , "3.90"))
+        d_λ =  int(st.text_input("invest" , "3.90"))
         λ = st.slider('λ', min_value=0.0 , max_value=4.0 , value= d_λ  , format="%.3f" )
         X0 = st.slider('X0', min_value=0.0 , max_value=1.0 , value=0.5  , format="%.2f" )    
         N = st.slider('N', min_value=0 , max_value=20000 , value=1000) 
