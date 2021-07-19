@@ -11,6 +11,7 @@ from datetime import datetime
 st.set_option('deprecation.showPyplotGlobalUse', False)
 import datetime
 plt.style.use('ggplot')
+from stqdm import stqdm
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'CAKE-PERP', timeframe = '15m'  , max  = 1439  
@@ -162,8 +163,23 @@ with col10.beta_expander("Feigenbaum "):
 
     if linear_x :
         y = linear_x
+        
     elif max_delta:
-        y = None
+        delta_z = delta(p_data = pair_data , start_end=[start  , end] , max= max , linear=True)
+        cf0 =  0   ; 
+        for  Index , _  in stqdm(enumerate(delta_z.series_num)):
+            if len(delta_z.get_data()) >= Index :
+                delta_df = delta_z.final()
+                delta_z.series_num.pop(Index)
+                cf1 = delta_df['cf_usd'][-1]
+                    if cf0 < cf1 :
+                        cf0 =  cf1
+                        print( cf1 )
+                    else:
+                        delta_z.series_num.append(Index)
+        else: break
+        y = delta_z.series_num
+        
     else:
         d_λ =  float(st.text_input("λ" , "3.90"))
         d_X0 =  float(st.text_input("X0" , "0.50"))
