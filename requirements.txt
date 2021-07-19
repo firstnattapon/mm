@@ -9,3 +9,4 @@ numpy
 datetime
 pandas_datareader
 yfinance
+stqdm
