@@ -22,7 +22,7 @@ class  delta :
         self.timeframe = timeframe
         self.limit = limit
         if linear == True:
-            self.series_num = np.array([ i for i in range(max)])
+            self.series_num = [ i for i in range(max)]
         else:
             self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
         self.minimum_re = minimum_re
