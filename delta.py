@@ -169,8 +169,8 @@ with col10.beta_expander("Feigenbaum "):
         cf0 =  0   ; 
         for  Index , _  in stqdm(enumerate(delta_z.series_num) , st_container=st.sidebar):
             if len(delta_z.get_data()) >= Index :
-                delta_df = delta_z.final()
                 delta_z.series_num.pop(Index)
+                delta_df = delta_z.final()
                 cf1 = delta_df['cf_usd'][-1]
                 if cf0 < cf1 :
                     cf0 =  cf1
