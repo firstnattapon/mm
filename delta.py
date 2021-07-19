@@ -202,7 +202,7 @@ if 1 :
     elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
 
     st.write('index :' , delta_A['index'][-1] , 
-             '   ,   next_re :' ,[i for i in  [i if i > delta_A['index'][-1] else np.nan for i in delta_x.series_num] if i != np.nan][0] ,
+             '   ,   next_re :' ,[i for i in  [i if i > delta_A['index'][-1] else np.nan for i in delta_x.series_num] if i != np.nan] ,
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
              round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 ))
