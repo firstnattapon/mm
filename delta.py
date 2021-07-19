@@ -203,7 +203,7 @@ if 1 :
 
     st.write('index :' , delta_A['index'][-1] , 
 #              '   ,   next_re :' ,  [i if i > delta_A['index'][-1] else np.nan for i in delta_x.series_num][0]  ,
-             '   ,   next_re :' ,  [i for i in delta_x.series_num]  ,
+             '   ,   next_re :' ,  [  i for i in delta_x.series_num if i > delta_A['index'][-1]]  ,
 
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
