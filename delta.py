@@ -197,7 +197,7 @@ if 1 :
 
     st.write('index :' , delta_A['index'][-1] , 
 #              '   ,   next_re :' ,  [i if i > delta_A['index'][-1] else np.nan for i in delta_x.series_num][0]  ,
-             '   ,   next_re :' , min(delta_x.series_num, key= lambda x:abs(x-delta_A['index'][-1]))  ,
+             '   ,   next_re :' , max(delta_x.series_num, key= lambda x:abs(x-delta_A['index'][-1]))  ,
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
              round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 )
