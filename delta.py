@@ -162,7 +162,7 @@ with col10.beta_expander("Feigenbaum "):
 
     if linear_x :
         y = linear_x
-    elif: max_delta:
+    elif max_delta:
         y = None
     else:
         d_λ =  float(st.text_input("λ" , "3.90"))
