@@ -163,7 +163,7 @@ with col10.beta_expander("Feigenbaum "):
     else:
         d_λ =  float(st.text_input("invest" , "3.90"))
         d_X0 =  float(st.text_input("invest" , "0.50"))
-        d_N =  int(st.text_input("invest" , "1000"))
+        d_N =  float(st.text_input("invest" , "1000"))
         λ = st.slider('λ', min_value=0.0 , max_value=4.0 , value= d_λ  , format="%.3f" )
         X0 = st.slider('X0', min_value=0.0 , max_value=1.0 , value=d_X0  , format="%.2f" )    
         N = st.slider('N', min_value=0 , max_value=20000 , value=d_N) 
