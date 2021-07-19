@@ -177,7 +177,8 @@ with col10.beta_expander("Feigenbaum "):
                     print( cf1 )
                 else:
                     delta_z.series_num.append(Index)
-        else: break
+            else: break
+            
         y = delta_z.series_num
         
     else:
