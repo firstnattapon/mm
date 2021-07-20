@@ -175,9 +175,10 @@ with col10.beta_expander("Feigenbaum "):
                 cf1 = delta_df['cf_usd'][-1]
                 if cf1 < cf2 :
                     cf2 = cf1
+                    st.write(Index)
                 elif cf1 > cf2:
                     cf2 =  cf1
-                    st.write(cf0)
+                    st.write(cf2)
                 else:
                     delta_z.series_num.append(Index)
             else: break
