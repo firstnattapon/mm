@@ -167,17 +167,19 @@ with col10.beta_expander("Feigenbaum "):
     elif max_delta:
         delta_z = delta(p_data = pair_data , start_end=[start  , end] , max= max , linear=True)
         cf0 =  0   ; 
-        for  Index , _  in stqdm(enumerate(delta_z.series_num) , st_container=st.sidebar):
-            if len(delta_z.get_data()) >= Index :
-                delta_z.series_num.pop(Index)
-                delta_df = delta_z.final()
-                cf1 = delta_df['cf_usd'][-1]
-                if cf0 < cf1 :
-                    cf0 =  cf1
-                    print( cf1 )
-                else:
-                    delta_z.series_num.append(Index)
-            else: break
+        
+        for _ in stqdm(range(1), st_container=st.sidebar):
+            for  Index , _  in enumerate(delta_z.series_num):
+                if len(delta_z.get_data()) >= Index :
+                    delta_z.series_num.pop(Index)
+                    delta_df = delta_z.final()
+                    cf1 = delta_df['cf_usd'][-1]
+                    if cf0 < cf1 :
+                        cf0 =  cf1
+                        print( cf1 )
+                    else:
+                        delta_z.series_num.append(Index)
+                else: break
             
         y = delta_z.series_num
         
