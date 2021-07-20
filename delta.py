@@ -176,7 +176,7 @@ with col10.beta_expander("Feigenbaum "):
                 if cf1 < cf2 :
                     cf2 = cf1
                     st.write(Index)
-                elif cf1 > cf2:
+                elif cf1 < cf2:
                     cf2 =  cf1
                     st.write(cf2)
                 else:
