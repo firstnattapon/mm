@@ -169,7 +169,7 @@ with col10.beta_expander("Feigenbaum "):
         cf0 =  0   ; 
         
         for _ in stqdm(range(1), st_container=st.sidebar):
-            for  Index , _  in enumerate(delta_z.series_num):
+            for  Index , _  in enumerate(delta_z.series_num , backend=True, frontend=False):
                 if len(delta_z.get_data()) >= Index :
                     delta_z.series_num.pop(Index)
                     delta_df = delta_z.final()
