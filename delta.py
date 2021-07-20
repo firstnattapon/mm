@@ -206,7 +206,7 @@ if 1 :
 #     st.success('Success')
     
     delta_x = delta(usd = invest , minimum_re = minimum_re , fix_value = fix_value , max = max , 
-                    p_data = pair_data , timeframe =  timeframe , series_num = series , start_end =[start , end] , mode = mode ) 
+                    p_data = pair_data , timeframe =  timeframe , series_num = y , start_end =[start , end] , mode = mode ) 
     delta_A= delta_x.final()
 
     with col11.beta_expander("expander"):
