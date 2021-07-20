@@ -27,7 +27,7 @@ class  delta :
             self.series_num = series_num
         elif mode == 'mode3':
             self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
-        else: break
+        else:pass
         self.minimum_re = minimum_re
         self.start_end = start_end
 
