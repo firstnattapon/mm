@@ -24,7 +24,7 @@ class  delta :
         if mode == 'mode1':
             self.series_num = [ i for i in range(max)]
         elif mode == 'mode2':
-            self.series_num = series_num
+            self.series_num =  np.array(series_num)
         elif mode == 'mode3':
             self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
         else:pass
@@ -179,13 +179,13 @@ with col10.beta_expander("Feigenbaum "):
                 cf1 = delta_df['cf_usd'][-1]
                 if cf1 > cf0 :
                     cf0 = cf1
-                    st.write(cf0)
+                st.write(cf0)
+                y = delta_z.series_num
                 else:
                     delta_z.series_num.append(Index)
                     st.write(Index)
-            else:
-                mode = 'mode2'
-                y = delta_z.series_num
+                    
+        mode = 'mode2'
 
     else:
         d_λ =  float(st.text_input("λ" , "3.90"))
