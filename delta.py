@@ -180,13 +180,16 @@ with col10.beta_expander("Feigenbaum "):
                 if cf1 > cf0 :
                     cf0 = cf1
                     st.write(cf0)
-                    y = delta_z.series_num
                 else:
                     delta_z.series_num.append(Index)
                     st.write(Index)
-                    
+            else:
+                st.write(delta_z.series_num)
+                break
+                
         mode = 'mode2'
-
+        y = delta_z.series_num
+        
     else:
         d_λ =  float(st.text_input("λ" , "3.90"))
         d_X0 =  float(st.text_input("X0" , "0.50"))
