@@ -184,11 +184,10 @@ with col10.beta_expander("Feigenbaum "):
                     delta_z.series_num.append(Index)
                     st.write(Index)
             else:
-                st.write(np.sort(delta_z.series_num))
-                break
+                pass
                 
         mode = 'mode2'
-        y = delta_z.series_num
+        y =  np.unique(np.sort(delta_z.series_num))
         
     else:
         d_λ =  float(st.text_input("λ" , "3.90"))
