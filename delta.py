@@ -183,7 +183,7 @@ with col10.beta_expander("Feigenbaum "):
                 else:
                     delta_z.series_num.append(Index)
                     st.write(Index)
-            else: break
+            else: pass
         mode = 'mode2'
         y = delta_z.series_num
         
