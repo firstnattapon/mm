@@ -176,8 +176,12 @@ with col10.beta_expander("Feigenbaum "):
                     cf1 = delta_df['cf_usd'][-1]
                     if cf0 < cf1 :
                         cf0 =  cf1
+                        st.write(cf0)
+
                     else:
                         delta_z.series_num.append(Index)
+                        
+                        st.write(slider_val)
                 else: break
 
             y = delta_z.series_num
