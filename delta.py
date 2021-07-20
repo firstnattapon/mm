@@ -15,7 +15,7 @@ from stqdm import stqdm
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'CAKE-PERP', timeframe = '15m'  , max  = 1439  
-                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [182 , 196] , mode = 'mode3'):
+                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [182 , 196] , mode = 'mode2'):
         self.usd    = usd
         self.fix_value  = fix_value
         self.p_data = p_data
@@ -24,8 +24,6 @@ class  delta :
         if mode == 'mode1':
             self.series_num = [ i for i in range(max)]
         elif mode == 'mode2':
-            self.series_num =  np.array(series_num)
-        elif mode == 'mode3':
             self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
         else:pass
         self.minimum_re = minimum_re
@@ -162,33 +160,10 @@ end = col9.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetupl
 col10 , col11 = st.beta_columns(2)
 with col10.beta_expander("Feigenbaum "):
     linear_x = st.checkbox("linear", value = False)
-    max_delta = st.checkbox("max_delta", value = False)
-
     if linear_x :
         mode = 'mode1'
         y = [None]
-        
-    elif max_delta:
-        delta_z = delta(p_data = pair_data , start_end=[start  , end] , max= max , mode='mode1')
-        cf0 = 0 
-        
-        for  Index , _  in enumerate(delta_z.series_num):
-            if len(delta_z.get_data()) > Index :
-                delta_z.series_num.pop(Index)
-                delta_df = delta_z.final()
-                cf1 = delta_df['cf_usd'][-1]
-                if cf1 > cf0 :
-                    cf0 = cf1
-                    st.write(cf0)
-                else:
-                    delta_z.series_num.append(Index)
-                    st.write(Index)
-            else:
-                pass
-                
-        mode = 'mode2'
-        y =  np.unique(np.sort(delta_z.series_num))
-        
+  
     else:
         d_λ =  float(st.text_input("λ" , "3.90"))
         d_X0 =  float(st.text_input("X0" , "0.50"))
@@ -201,7 +176,7 @@ with col10.beta_expander("Feigenbaum "):
         for it in range(num):
             x = mu * x * (1.0 - x)
             y.append(x)
-        mode = 'mode3'
+        mode = 'mode2'
     
 # if x == 0.8749972636024641 and y[-1] == 0.8749972636024641 :
 if 1 :
