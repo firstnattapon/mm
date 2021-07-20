@@ -166,21 +166,19 @@ with col10.beta_expander("Feigenbaum "):
         
     elif max_delta:
         delta_z = delta(p_data = pair_data , start_end=[start  , end] , max= max , linear=True)
-        cf2 = 0 
+        cf0 = 0 
         
         for  Index , _  in enumerate(delta_z.series_num):
             if len(delta_z.get_data()) > Index :
                 delta_z.series_num.pop(Index)
                 delta_df = delta_z.final()
                 cf1 = delta_df['cf_usd'][-1]
-                if cf1 < cf2 :
-                    cf2 = cf1
-                    st.write(Index)
-                elif cf1 < cf2:
-                    cf2 =  cf1
+                if cf1 > cf0 :
+                    cf0 = cf1
                     st.write(cf2)
                 else:
                     delta_z.series_num.append(Index)
+                    st.write(Index)
             else: break
 
         y = delta_z.series_num
