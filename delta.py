@@ -169,7 +169,7 @@ with col10.beta_expander("Feigenbaum "):
         y = [None]
         
     elif max_delta:
-        delta_z = delta(p_data = pair_data , start_end=[start  , end] , max= max , linear=True)
+        delta_z = delta(p_data = pair_data , start_end=[start  , end] , max= max , linear='mode1')
         cf0 = 0 
         
         for  Index , _  in enumerate(delta_z.series_num):
