@@ -15,7 +15,7 @@ from stqdm import stqdm
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'CAKE-PERP', timeframe = '15m'  , max  = 1439  
-                 , limit  = 5000 , series_num = None , minimum_re = 0.005 , start_end = [182 , 196] , mode = 'mode2'):
+                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [182 , 196] , mode = 'mode2'):
         self.usd        = usd
         self.fix_value  = fix_value
         self.p_data     = p_data
@@ -208,7 +208,7 @@ if 1 :
 
                     
     st.write('index :' , delta_A['index'][-1] , 
-             '   ,   next_re :' , [i for i in  [i if i > delta_A['index'][-1] else '-' for i in delta_x.series_num] if i != '-'] ,
+             '   ,   next_re :' , [i for i in  [i if i > delta_A['index'][-1] else None for i in delta_x.series_num] if i != None][0] ,
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
              round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 ))
