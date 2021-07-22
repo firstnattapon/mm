@@ -207,7 +207,7 @@ if 1 :
     elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
 
    try:
-    next_re = [i for i in  [i if i > delta_A['index'][-1] else None for i in delta_x.series_num] if i != None][0]
+        next_re = [i for i in  [i if i > delta_A['index'][-1] else None for i in delta_x.series_num] if i != None][0]
     except:
         next_re = None
                     
