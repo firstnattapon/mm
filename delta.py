@@ -208,8 +208,9 @@ if 1 :
 
     st.write('index :' , delta_A['index'][-1] , 
              '   ,   next_re :' ,
-             try:[i for i in  [i if i > delta_A['index'][-1] else None for i in delta_x.series_num] if i != None][0]
-             except: None
+             try:
+             [i for i in  [i if i > delta_A['index'][-1] else None for i in delta_x.series_num] if i != None][0]
+             except:None
              ,
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
