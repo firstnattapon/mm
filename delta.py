@@ -211,7 +211,7 @@ if 1 :
     elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
 
     st.write('index :' , delta_A['index'][-1] , 
-#              '   ,   next_re :' ,[i for i in  [i if i > delta_A['index'][-1] else None for i in delta_x.series_num] if i != None][0] ,
+             '   ,   next_re :' ,[i for i in  [i if i > delta_A['index'][-1] else None for i in delta_x.series_num] if i != None][0] ,
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
              round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 ))
@@ -222,13 +222,13 @@ if 1 :
     for i in plot:
         plt.plot(delta_A[i] ,label =i)
    
-#     data_vl = delta_A[delta_A['index'].isin(delta_x.series_num)] ; vline = data_vl.index
-#     for vl in vline:
-#         plt.axvline(x=vl , ymin=0.0, ymax=0.50, color='k', alpha = 0.25)
+    data_vl = delta_A[delta_A['index'].isin(delta_x.series_num)] ; vline = data_vl.index
+    for vl in vline:
+        plt.axvline(x=vl , ymin=0.0, ymax=0.50, color='k', alpha = 0.25)
         
-#     per_dit = data_vl[data_vl['re'] != 0 ] ; per_dit = per_dit.index
-#     for pd in per_dit:
-#         plt.axvline(x=pd , ymin=0.50 , ymax=1.00, color='k' , alpha = 0.25 )
+    per_dit = data_vl[data_vl['re'] != 0 ] ; per_dit = per_dit.index
+    for pd in per_dit:
+        plt.axvline(x=pd , ymin=0.50 , ymax=1.00, color='k' , alpha = 0.25 )
         
     plt.legend()
     st.pyplot()
