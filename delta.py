@@ -206,13 +206,9 @@ if 1 :
     elif options == 'cash_hold vs cash_mkt':plot = ['cash' ,'cash_mkt']
     elif options == 'sumusd_hold vs sumusd_mkt':plot = ['sumusd' ,'sumusd_mkt' , "start_usd"]
 
-   try:
-        next_re = [i for i in  [i if i > delta_A['index'][-1] else None for i in delta_x.series_num] if i != None][0]
-    except:
-        next_re = None
                     
     st.write('index :' , delta_A['index'][-1] , 
-             '   ,   next_re :' , next_re,
+             '   ,   next_re :' , [i for i in  [i if i > delta_A['index'][-1] else [0] for i in delta_x.series_num] if i != [0]][0] ,
              '   ,   start :' , start , '   ,   end :' , end ,
              '   ,   perdit :',delta_A['perdit'][-1] ,'   ,   re :' ,
              round(delta_A['re'][-1] , 2) , '   ,   diff :' , round(delta_A['diff'][-1] , 4 ))
