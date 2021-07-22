@@ -162,12 +162,10 @@ end = col9.date_input('end', datetime.date(2021,7,31)) ; end =  int(end.timetupl
 col10 , col11 = st.beta_columns(2)
 with col10.beta_expander("Feigenbaum "):
     linear_x = st.checkbox("linear", value = False)
-    max_delta = st.checkbox("max_delta", value = False)
-
+    
     if linear_x :
         mode = 'mode1'
         y = None
-        
     else:
         d_λ =  float(st.text_input("λ" , "3.90"))
         d_X0 =  float(st.text_input("X0" , "0.50"))
