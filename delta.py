@@ -15,16 +15,16 @@ from stqdm import stqdm
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'CAKE-PERP', timeframe = '15m'  , max  = 1439  
-                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [182 , 196] , mode = 'mode2'):
-        self.usd    = usd
+                 , limit  = 5000 , series_num = None , minimum_re = 0.005 , start_end = [182 , 196] , mode = 'mode2'):
+        self.usd        = usd
         self.fix_value  = fix_value
-        self.p_data = p_data
-        self.timeframe = timeframe
-        self.limit = limit
-        if mode == 'mode1':
-            self.series_num = [ i for i in range(max)]
-        elif mode == 'mode2':
-            self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
+        self.p_data     = p_data
+        self.timeframe  = timeframe
+        self.limit      = limit
+        self.mode       = mode
+        if      self.mode   == 'mode1':    self.series_num = [ i for i in range(max)]
+        elif    self.mode  == 'mode2':     self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
+        elif    self.mode  == 'mode3':     self.series_num = series_num
         else:pass
         self.minimum_re = minimum_re
         self.start_end = start_end
@@ -46,9 +46,20 @@ class  delta :
         return df
 
     def series(self):
+        idx_close = 0 ; idx_perdit = 3  ;  idx_diff = 2 
         series  = self.get_data()
         series['index'] =np.array([ i for i in range(len(series))])
-        series['perdit'] =series['index'].apply(func= (lambda x : np.where( x in self.series_num , 1 , 0)))
+        if  self.mode ==  'mode3':
+            series['diff'] = series.close.pct_change(periods=-1)
+            series['perdit'] = np.nan
+            for i in range(len(series)):
+                if  np.where(series.iloc[ i , idx_diff] < 0 , 1 , 0 ) == 1:
+                    series.iloc[ i , idx_perdit] = 1
+                else:
+                    series.iloc[ i , idx_perdit] = 0
+            series = series.drop(['diff'], axis=1)
+        else:
+            series['perdit'] =series['index'].apply(func= (lambda x : np.where( x in self.series_num , 1 , 0)))
         return series
 
     def  nav (self):
