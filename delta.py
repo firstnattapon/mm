@@ -27,8 +27,6 @@ class  delta :
         else:pass
         self.minimum_re = minimum_re
         self.start_end = start_end
-        self.max = max
- 
 
     def get_data(self):
         exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
