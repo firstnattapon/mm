@@ -22,9 +22,8 @@ class  delta :
         self.timeframe  = timeframe
         self.limit      = limit
         self.mode       = mode
-        if      self.mode   == 'mode1':    self.series_num = [ i for i in range(max)]
-        elif    self.mode  == 'mode2':     self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
-        elif    self.mode  == 'mode3':     self.series_num = series_num
+        if      self.mode   == 'mode1':     self.series_num = [ i for i in range(max)]
+        elif    self.mode   == 'mode2':     self.series_num = np.array(np.unique([np.around( x * max) for x in series_num]))
         else:pass
         self.minimum_re = minimum_re
         self.start_end = start_end
@@ -51,21 +50,7 @@ class  delta :
         idx_close = 0 ; idx_perdit = 3  ;  idx_diff = 2 ; idx_index  = 1
         series  = self.get_data()
         series['index'] =np.array([ i for i in range(len(series))])
-        if  self.mode ==  'mode3':
-            series['diff'] = series.close.pct_change(periods=-1)
-            series['perdit'] = np.nan
-            series_nb = []
-            for i in range(self.max):
-                if  np.where(series.iloc[ i , idx_diff] < 0 , 1 , 0 )  == 1:
-                    series.iloc[ i , idx_perdit] = 1
-                    series_nb.append(series.iloc[ i , idx_index])
-                else:
-                    series.iloc[ i , idx_perdit] = 0
-                    
-            series = series.drop(['diff'], axis=1)
-            self.series_num = series_nb
-        else:
-            series['perdit'] =series['index'].apply(func= (lambda x : np.where( x in self.series_num , 1 , 0)))
+        series['perdit'] =series['index'].apply(func= (lambda x : np.where( x in self.series_num , 1 , 0)))
         return series
 
     def  nav (self):
@@ -183,10 +168,6 @@ with col10.beta_expander("Feigenbaum "):
         mode = 'mode1'
         y = None
         
-    if max_delta :
-        mode = 'mode3'
-        y = None
- 
     else:
         d_λ =  float(st.text_input("λ" , "3.90"))
         d_X0 =  float(st.text_input("X0" , "0.50"))
