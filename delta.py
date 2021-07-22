@@ -53,7 +53,7 @@ class  delta :
             series['diff'] = series.close.pct_change(periods=-1)
             series['perdit'] = np.nan
             for i in range(len(series)):
-                if  np.where(series.iloc[ i , idx_diff] < 0 , 1 , 0 ) == 1:
+                if  np.where(series.iloc[ i , idx_diff] > 0 , 1 , 0 ) == 1:
                     series.iloc[ i , idx_perdit] = 1
                 else:
                     series.iloc[ i , idx_perdit] = 0
