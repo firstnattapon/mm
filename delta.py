@@ -28,6 +28,7 @@ class  delta :
         else:pass
         self.minimum_re = minimum_re
         self.start_end = start_end
+        self.max = max
 
     def get_data(self):
         exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
@@ -53,7 +54,7 @@ class  delta :
             series['diff'] = series.close.pct_change(periods=-1)
             series['perdit'] = np.nan
             series_nb = []
-            for i in range(len(series)):
+            for i in range(self.max):
                 if  np.where(series.iloc[ i , idx_diff] < 0 , 1 , 0 )  == 1:
                     series.iloc[ i , idx_perdit] = 1
                     series_nb.append(series.iloc[ i , idx_index])
