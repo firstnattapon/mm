@@ -239,9 +239,9 @@ if 1 :
 #     for vl in vline:
 #         plt.axvline(x=vl , ymin=0.0, ymax=0.50, color='k', alpha = 0.25)
         
-    per_dit = data_vl[data_vl['re'] != 0 ] ; per_dit = per_dit.index
-    for pd in per_dit:
-        plt.axvline(x=pd , ymin=0.50 , ymax=1.00, color='k' , alpha = 0.25 )
+#     per_dit = data_vl[data_vl['re'] != 0 ] ; per_dit = per_dit.index
+#     for pd in per_dit:
+#         plt.axvline(x=pd , ymin=0.50 , ymax=1.00, color='k' , alpha = 0.25 )
         
     plt.legend()
     st.pyplot()
