@@ -15,7 +15,7 @@ from stqdm import stqdm
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, p_data = 'CAKE-PERP', timeframe = '15m'  , max  = 1439  
-                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [182 , 196] , mode = 'mode2'):
+                 , limit  = 5000 , series_num = ['0'] , minimum_re = 0.005 , start_end = [182 , 196] , mode = 'mode2'):
         self.usd        = usd
         self.fix_value  = fix_value
         self.p_data     = p_data
