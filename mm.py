@@ -63,3 +63,8 @@ plt.axvline(p[index_1], color='k', ls='--' , lw=0.9, ymin=0.40, ymax=0.60)
 plt.axvline(p[index_2], color='k', ls='--' , lw=0.9)
 plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
 col1.pyplot(plt)
+
+
+st.write(p[index_1]) 
+st.write(p[index_2]) 
+
