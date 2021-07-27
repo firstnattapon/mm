@@ -60,4 +60,4 @@ plt.axhline(capital , color='k')
 plt.axvline(p[index_1], color='k');
 plt.axvline(p[index_2], color='k');
 plt.axvline(p[index_3], color='k');
-st.pyplot(fig)
+st.pyplot(plt)
