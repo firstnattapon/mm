@@ -56,7 +56,7 @@ plt.subplots(figsize=(12, 8))
 plt.plot(p ,  i  , color='r') 
 plt.plot(p ,  c  , color='g')
 # plt.plot(p ,  a  ) 
-# plt.plot(p , pf , '--') 
+plt.plot(p , pf , '--') 
 
 plt.axhline(0 , color='k', ls='--' , lw=0.9)
 plt.axhline(capital , color='k', ls='--' , lw=0.9)
