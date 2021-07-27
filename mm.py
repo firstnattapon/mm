@@ -16,7 +16,7 @@ from stqdm import stqdm
 col1,  = st.beta_columns(1)
 col2,col3  = st.beta_columns(2)
 
-with  col2.beta_expander('option'):
+with  col3.beta_expander('option'):
     capital = st.number_input('capital', min_value=0, max_value=100000 , value=1000 )
     lowwer = st.number_input('lowwer', min_value=0., max_value=1000. , value=0.0 )
     upper = st.number_input('upper', min_value=0., max_value=1000. , value=2.0  )
@@ -65,8 +65,8 @@ plt.axvline(p[index_2], color='k', ls='--' , lw=0.9)
 plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
 col1.pyplot(plt)
 
-col3.write('lower = {}'.format( p[index_2])) 
-col3.write('50%  = {}'.format( p[index_1])) 
-col3.write('upper = {}'.format( p[index_3])) 
-col3.write('cf = {:.2f}'.format( pf[3])) 
+col2.write('lower = {}'.format( p[index_2])) 
+col2.write('50%  = {}'.format( p[index_1])) 
+col2.write('upper = {}'.format( p[index_3])) 
+col2.write('cf = {:.2f}'.format( pf[3])) 
 
