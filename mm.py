@@ -52,7 +52,7 @@ index_3 = difference_array_3.argmin()
 plt.subplots(figsize=(12, 8))
 plt.plot(p ,  i  , color='r') 
 plt.plot(p ,  c  , color='g')
-plt.plot(p ,  a  ) 
+# plt.plot(p ,  a  ) 
 # plt.plot(p , pf , '--') 
 
 plt.axhline(0 , color='k')
