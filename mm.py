@@ -14,9 +14,9 @@ plt.style.use('ggplot')
 from stqdm import stqdm
 
 col1,  = st.beta_columns(1)
-col2,col4  = st.beta_columns(2)
+col2,col3,col4  = st.beta_columns(3)
 
-with  col2.beta_expander('option'):
+with  col3.beta_expander('option'):
     capital = st.number_input('capital', min_value=0, max_value=100000 , value=1000 )
     lowwer = st.number_input('lowwer', min_value=0., max_value=1000. , value=0.0 )
     upper = st.number_input('upper', min_value=0., max_value=1000. , value=2.0  )
