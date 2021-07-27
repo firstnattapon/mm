@@ -56,8 +56,8 @@ plt.plot(p ,  c  , color='g')
 # plt.plot(p , pf , '--') 
 
 plt.axhline(0 , color='k')
-plt.axhline(capital , color='k', ls='--' , lw=0.2)
-plt.axvline(p[index_1], color='k');
-plt.axvline(p[index_2], color='k');
-plt.axvline(p[index_3], color='k');
+plt.axhline(capital , color='k', ls='--' , lw=0.5)
+plt.axvline(p[index_1], color='k', ls='--' , lw=0.5)
+plt.axvline(p[index_2], color='k', ls='--' , lw=0.5)
+plt.axvline(p[index_3], color='k', ls='--' , lw=0.5)
 st.pyplot(plt)
