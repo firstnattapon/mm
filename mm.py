@@ -13,14 +13,14 @@ import datetime
 plt.style.use('ggplot')
 from stqdm import stqdm
 
-
-capital = st.slider('capital', min_value=0, max_value=100000 , value=1000 )
-lowwer = st.slider('lowwer', min_value=0., max_value=1000. , value=0.0 )
-upper = st.slider('upper', min_value=0., max_value=1000. , value=2.0  )
-delta = st.slider('delta', min_value=0., max_value=10.0 , value=0.01)
-n =  st.slider('median', min_value=0., max_value=1000., value=0.40)
-f = st.slider('fix', min_value=0, max_value=100000 , value=500 )
-r = st.slider('r%', min_value=0., max_value=10., value=0.01)
+with st.beta_expander('option'):
+    capital = st.slider('capital', min_value=0, max_value=100000 , value=1000 )
+    lowwer = st.slider('lowwer', min_value=0., max_value=1000. , value=0.0 )
+    upper = st.slider('upper', min_value=0., max_value=1000. , value=2.0  )
+    delta = st.slider('delta', min_value=0., max_value=10.0 , value=0.01)
+    n =  st.slider('median', min_value=0., max_value=1000., value=0.40)
+    f = st.slider('fix', min_value=0, max_value=100000 , value=500 )
+    r = st.slider('r%', min_value=0., max_value=10., value=0.01)
 
 p  = np.arange( lowwer , upper , delta )
 # n = ( lowwer + (upper -  lowwer) * m)
