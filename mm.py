@@ -29,8 +29,8 @@ d = [abs((a[i+1] - a[i]) * p[i])  if i +1< len(p) else np.nan  for i in range(le
 
 difference_array_1 = np.absolute(p-n)
 index_1 = difference_array_1.argmin()
-i = np.zeros(len(p) , dtype=np.float16 )
-pf = np.zeros(len(p), dtype=np.float16 )
+i = np.zeros(len(p))
+pf = np.zeros(len(p))
 i[index_1] = f
 
 for k in np.arange(index_1 -1 , -1 , -1 ):
