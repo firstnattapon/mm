@@ -23,7 +23,7 @@ with st.beta_expander('option'):
     delta = st.number_input('delta', min_value=0., max_value=10.0 , value=0.01)
     n =  st.number_input('median', min_value=0., max_value=1000., value=0.40)
     f = st.number_input('fix', min_value=0, max_value=100000 , value=500 )
-    r = st.number_input('r%', min_value=0., max_value=10., value=0.01)
+    r = st.number_input('r%', min_value=0., max_value=10., value=1.01)
 
 p  = np.arange( lowwer , upper , delta )
 # n = ( lowwer + (upper -  lowwer) * m)
