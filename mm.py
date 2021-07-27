@@ -68,5 +68,5 @@ col1.pyplot(plt)
 col2.write('lower = {}'.format( p[index_2])) 
 col2.write('50%  = {}'.format( p[index_1])) 
 col2.write('upper = {}'.format( p[index_3])) 
-col2.write('cf = {}'.format( pf[index_1-1])) 
+col2.write('cf = {}'.format( pf[3])) 
 
