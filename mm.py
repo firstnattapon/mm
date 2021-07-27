@@ -56,7 +56,7 @@ plt.plot(p ,  c  , color='g')
 # plt.plot(p , pf , '--') 
 
 plt.axhline(0 , color='k')
-plt.axhline(capital , color='k', '--')
+plt.axhline(capital , color='k', ls='--')
 plt.axvline(p[index_1], color='k');
 plt.axvline(p[index_2], color='k');
 plt.axvline(p[index_3], color='k');
