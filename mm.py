@@ -13,14 +13,15 @@ import datetime
 plt.style.use('ggplot')
 from stqdm import stqdm
 
+st.number_input('Enter a number')
 
-capital = 1000 
-lowwer = 0.00  
-upper = 2.00  
-delta = 0.01  
-n =  0.40 
-f = 500     
-r = 1.01
+capital = st.slider('capital', min_value=0, max_value=100000 , value=1000 )
+lowwer = st.slider('lowwer', min_value=0, max_value=1000 , value=0.0 )
+upper = st.slider('upper', min_value=0, max_value=1000 , value=2.0  )
+delta = st.slider('delta', min_value=0, max_value=10.0 , value=0.01)
+n =  st.slider('median', min_value=0, max_value=1000, value=0.40)
+f = st.slider('fix', min_value=0, max_value=100000 , value=500 )
+r = st.slider('r%', min_value=0, max_value=10, value=0.01)
 
 p  = np.arange( lowwer , upper , delta )
 # n = ( lowwer + (upper -  lowwer) * m)
@@ -48,3 +49,15 @@ index_2 = difference_array_2.argmin()
 
 difference_array_3 = np.absolute(np.nan_to_num(c) - capital)
 index_3 = difference_array_3.argmin()
+
+
+plt.plot(p ,  i  , color='r') 
+plt.plot(p ,  c  , color='g')
+# plt.plot(p ,  a  ) 
+plt.plot(p , pf , '--') 
+
+plt.axhline(0 , color='k')
+plt.axhline(capital , color='k')
+plt.axvline(p[index_1], color='k');
+plt.axvline(p[index_2], color='k');
+plt.axvline(p[index_3], color='k');
