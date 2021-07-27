@@ -50,7 +50,8 @@ index_2 = difference_array_2.argmin()
 
 difference_array_3 = np.absolute(np.nan_to_num(c) - capital)
 index_3 = difference_array_3.argmin()
-
+st.write(p[index_1]) 
+st.write(p[index_2]) 
 plt.subplots(figsize=(12, 8))
 plt.plot(p ,  i  , color='r') 
 plt.plot(p ,  c  , color='g')
@@ -65,6 +66,5 @@ plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
 col1.pyplot(plt)
 
 
-st.write(p[index_1]) 
-st.write(p[index_2]) 
+ 
 
