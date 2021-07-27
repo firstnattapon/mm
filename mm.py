@@ -17,10 +17,12 @@ col1,  = st.beta_columns(1)
 col2,  = st.beta_columns(1)
 
 with  col2.beta_expander('option'):
-    capital = st.number_input('capital', min_value=0, max_value=100000 , value=1000 )
-    lowwer = st.number_input('lowwer', min_value=0., max_value=1000. , value=0.0 )
-    upper = st.number_input('upper', min_value=0., max_value=1000. , value=2.0  )
-    delta = st.number_input('delta', min_value=0., max_value=10.0 , value=0.01)
+    col3, col4 , col5  = st.beta_columns(3)
+
+    capital = col3.number_input('capital', min_value=0, max_value=100000 , value=1000 )
+    lowwer = col4.number_input('lowwer', min_value=0., max_value=1000. , value=0.0 )
+    upper = col5.number_input('upper', min_value=0., max_value=1000. , value=2.0  )
+    delta = col3.number_input('delta', min_value=0., max_value=10.0 , value=0.01)
     n =  st.number_input('median', min_value=0., max_value=1000., value=0.40)
     f = st.number_input('fix', min_value=0, max_value=100000 , value=500 )
     r = st.number_input('r%', min_value=0., max_value=10., value=1.01)
