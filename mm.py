@@ -14,6 +14,7 @@ plt.style.use('ggplot')
 from stqdm import stqdm
 
 col1,  = st.beta_columns(1)
+col2,  = st.beta_columns(1)
 
 with st.beta_expander('option'):
     capital = st.number_input('capital', min_value=0, max_value=100000 , value=1000 )
@@ -50,8 +51,7 @@ index_2 = difference_array_2.argmin()
 
 difference_array_3 = np.absolute(np.nan_to_num(c) - capital)
 index_3 = difference_array_3.argmin()
-st.write(p[index_1]) 
-st.write(p[index_2]) 
+ 
 plt.subplots(figsize=(12, 8))
 plt.plot(p ,  i  , color='r') 
 plt.plot(p ,  c  , color='g')
@@ -66,5 +66,6 @@ plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
 col1.pyplot(plt)
 
 
- 
+col2.write(p[index_1]) 
+col2.write(p[index_2]) 
 
