@@ -13,6 +13,8 @@ import datetime
 plt.style.use('ggplot')
 from stqdm import stqdm
 
+col1,  = st.beta_columns(1)
+
 with st.beta_expander('option'):
     capital = st.number_input('capital', min_value=0, max_value=100000 , value=1000 )
     lowwer = st.number_input('lowwer', min_value=0., max_value=1000. , value=0.0 )
@@ -60,4 +62,4 @@ plt.axhline(capital , color='k', ls='--' , lw=0.9)
 plt.axvline(p[index_1], color='k', ls='--' , lw=0.9, ymin=0.40, ymax=0.60)
 plt.axvline(p[index_2], color='k', ls='--' , lw=0.9)
 plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
-st.pyplot(plt)
+col1.pyplot(plt)
