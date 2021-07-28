@@ -46,7 +46,7 @@ for q in  np.arange( index_1 +1 , len(i)  , 1 ):
     i[q] = i[q-1] - d[q]
     pf[q] = ((p[q]* r ) - p[index_1]) * a[q] 
 
-c = f*2 - i
+c =  capital - i
 
 i[0] = i[1] ; i[-1] = i[-2] 
 pf[index_1] = np.nan
