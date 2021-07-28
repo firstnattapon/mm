@@ -75,7 +75,7 @@ col5.pyplot()
 col4.write('lower = {:.2f}'.format( p[index_2])) 
 col4.write('50%  = {:.2f}'.format( p[index_1])) 
 col4.write('upper = {:.2f}'.format( p[index_3])) 
-col4.write('cf = {:.2f}'.format( pf[3])) 
+col4.write('cf = {:.2f}'.format( pf[3] *(r-1) )) 
 
 col6,  = st.beta_columns(1)
 df = pd.DataFrame({ "ราคา" : p   ,
@@ -90,5 +90,5 @@ with  col6.beta_expander('data'):
     st.write(df)
 
 plt.subplots(figsize=(12, 2))
-plt.plot(p , pf*0.01 , '--') 
+plt.plot(p , pf*(r-1)  , '--') 
 col7.pyplot()    
