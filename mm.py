@@ -14,6 +14,7 @@ plt.style.use('ggplot')
 from stqdm import stqdm
 
 col1,  = st.beta_columns(1)
+col5,  = st.beta_columns(1)
 col2,col3,col4  = st.beta_columns(3)
 
 with  col3.beta_expander(''):
@@ -64,6 +65,9 @@ plt.axvline(p[index_1], color='k', ls='--' , lw=0.9, ymin=0.40, ymax=0.60)
 plt.axvline(p[index_2], color='k', ls='--' , lw=0.9)
 plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
 col1.pyplot(plt)
+
+plt.plot(p ,  a  ) 
+col5.pyplot(plt)
 
 col4.write('lower = {:.2f}'.format( p[index_2])) 
 col4.write('50%  = {:.2f}'.format( p[index_1])) 
