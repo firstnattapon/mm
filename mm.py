@@ -15,8 +15,8 @@ from stqdm import stqdm
 np.set_printoptions(precision=8)
 
 col1,  = st.beta_columns(1)
-col5,  = st.beta_columns(1)
-col7,  = st.beta_columns(1)
+
+col5, col7 = st.beta_columns(2)
 col2,col3  = st.beta_columns((3 , 1))
 
 with  col2.beta_expander(''):
