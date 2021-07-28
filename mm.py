@@ -85,7 +85,7 @@ df = pd.DataFrame({ "ราคา" : p   ,
                     "asset": a  ,
                     "เงินทุนที่ใช้ไป": i ,
                     "เงินทุนคงเหลือ" : c,
-                   "กำไร" : pf})
+                   "กำไร" : pf *(r-1) })
 
 with  col6.beta_expander('data'):
     st.write(df)
