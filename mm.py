@@ -56,8 +56,6 @@ index_3 = difference_array_3.argmin()
 plt.subplots(figsize=(12, 8))
 plt.plot(p ,  i  , color='r') 
 plt.plot(p ,  c  , color='g')
-# plt.plot(p ,  a  ) 
-# plt.plot(p , pf , '--') 
 
 plt.axhline(0 , color='k', ls='--' , lw=0.9)
 plt.axhline(capital , color='k', ls='--' , lw=0.9)
@@ -67,6 +65,7 @@ plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
 col1.pyplot()
 
 plt.plot(p ,  a ) 
+# plt.plot(p , pf , '--') 
 col5.pyplot()
 
 col4.write('lower = {:.2f}'.format( p[index_2])) 
