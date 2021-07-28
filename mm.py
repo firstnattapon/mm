@@ -48,6 +48,7 @@ for q in  np.arange( index_1 +1 , len(i)  , 1 ):
 c = f*2 - i
 
 i[0] = i[1] ; i[-1] = i[-2] 
+pf[index_1] = np.nan
 
 difference_array_2 = np.absolute(np.nan_to_num(i) - capital)
 index_2 = difference_array_2.argmin()
