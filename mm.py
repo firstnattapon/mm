@@ -17,7 +17,7 @@ col1,  = st.beta_columns(1)
 col5,  = st.beta_columns(1)
 col2,col3,col4  = st.beta_columns(3)
 
-with  col3.beta_expander(''):
+with  col2.beta_expander(''):
     capital = st.number_input('capital', min_value=0, max_value=100000 , value=1000 )
     n =  st.number_input('median', min_value=0., max_value=100000., value=0.40)
     f = st.number_input('fix', min_value=0, max_value=100000 , value=500 )
