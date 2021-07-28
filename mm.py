@@ -47,10 +47,12 @@ for q in  np.arange( index_1 +1 , len(i)  , 1 ):
 
 c = f*2 - i
 
-difference_array_2 = np.absolute(np.nan_to_num(i[1:-1]) - capital)
+i[0] = i[1] ; i[-1] = i[-2] 
+
+difference_array_2 = np.absolute(np.nan_to_num(i) - capital)
 index_2 = difference_array_2.argmin()
 
-difference_array_3 = np.absolute(np.nan_to_num(i[1:-1]) - 0)
+difference_array_3 = np.absolute(np.nan_to_num(i) - 0)
 index_3 = difference_array_3.argmin()
  
 plt.subplots(figsize=(12, 8))
