@@ -17,7 +17,6 @@ np.set_printoptions(precision=8)
 col1,  = st.beta_columns(1)
 col5,  = st.beta_columns(1)
 col7,  = st.beta_columns(1)
-col2,col3,col4  = st.beta_columns(3)
 
 with  col3.beta_expander(''):
     capital = st.number_input('capital', min_value=0, max_value=100000 , value=1000 )
@@ -86,9 +85,7 @@ df = pd.DataFrame({ "ราคา" : p   ,
                     "asset": a  ,
                     "เงินทุนที่ใช้ไป": i ,
                     "เงินทุนคงเหลือ" : c,
-                   "กำไร" : pf
-                   ,
-                  })
+                   "กำไร" : pf})
 
 with  col6.beta_expander('data'):
     st.write(df)
