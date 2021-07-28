@@ -70,7 +70,7 @@ col1.pyplot()
 
 plt.subplots(figsize=(12, 2))
 plt.plot(p ,  a )
-=col5.pyplot()
+col5.pyplot()
 
 col4.write('lower = {:.2f}'.format( p[index_2])) 
 col4.write('50%  = {:.2f}'.format( p[index_1])) 
