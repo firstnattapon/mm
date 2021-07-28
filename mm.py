@@ -90,5 +90,5 @@ with  col6.beta_expander('data'):
     st.write(df)
 
 plt.subplots(figsize=(12, 2))
-plt.plot(p , pf , '--') 
+plt.plot(p , pf*0.01 , '--') 
 col7.pyplot()    
