@@ -71,8 +71,8 @@ plt.plot(p ,  a )
 # plt.plot(p , pf , '--') 
 col5.pyplot()
 
-col2.write('lower = {:.2f}'.format( p[index_2])) 
-col2.write('50%  = {:.2f}'.format( p[index_1])) 
-col2.write('upper = {:.2f}'.format( p[index_3])) 
-col2.write('cf = {:.2f}'.format( pf[3])) 
+col4.write('lower = {:.2f}'.format( p[index_2])) 
+col4.write('50%  = {:.2f}'.format( p[index_1])) 
+col4.write('upper = {:.2f}'.format( p[index_3])) 
+col4.write('cf = {:.2f}'.format( pf[3])) 
 
