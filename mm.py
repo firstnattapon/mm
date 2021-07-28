@@ -12,7 +12,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 import datetime
 plt.style.use('ggplot')
 from stqdm import stqdm
-np.set_printoptions(precision=4)
+np.set_printoptions(precision=8)
 
 col1,  = st.beta_columns(1)
 col5,  = st.beta_columns(1)
