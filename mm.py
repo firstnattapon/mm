@@ -64,7 +64,8 @@ plt.axvline(p[index_2], color='k', ls='--' , lw=0.9)
 plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
 col1.pyplot()
 
-plt.plot(p ,  a ) 
+plt.subplots(figsize=(12, 2))
+plt.plot(p ,  a )
 # plt.plot(p , pf , '--') 
 col5.pyplot()
 
