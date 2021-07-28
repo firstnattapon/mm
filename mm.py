@@ -50,7 +50,7 @@ c = f*2 - i
 difference_array_2 = np.absolute(np.nan_to_num(i) - capital)
 index_2 = difference_array_2.argmin()
 
-difference_array_3 = np.absolute(np.nan_to_num(c) - capital)
+difference_array_3 = np.absolute(np.nan_to_num(i) - 0)
 index_3 = difference_array_3.argmin()
  
 plt.subplots(figsize=(12, 8))
