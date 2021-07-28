@@ -77,7 +77,7 @@ col4.write('upper = {:.2f}'.format( p[index_3]))
 col4.write('cf = {:.2f}'.format( pf[3])) 
 
 col6,  = st.beta_columns(1)
-df = pd.DataFrame({ "ราคา" : p })
+df = pd.DataFrame({ "ราคา" : p  , "asset": a })
 
 with  col6.beta_expander('data'):
     st.write(df)
