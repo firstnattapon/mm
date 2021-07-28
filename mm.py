@@ -23,7 +23,7 @@ with  col2.beta_expander(''):
     n =  st.number_input('median', min_value=0., max_value=100000., value=0.60)
     f = st.number_input('fix', min_value=0, max_value=100000 , value=500 )
     lowwer = st.number_input('lowwer', min_value=0., max_value=100000. , value=0.0 )
-    upper = st.number_input('upper', min_value=0., max_value=100000. , value=3.0  )
+    upper = st.number_input('upper', min_value=0., max_value=100000. , value=2.0  )
     delta = st.number_input('delta', min_value=0., max_value=10.0 , value=0.01)
     r = st.number_input('r%', min_value=0., max_value=10., value=1.01)
 
