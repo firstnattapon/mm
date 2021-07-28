@@ -15,6 +15,7 @@ from stqdm import stqdm
 
 col1,  = st.beta_columns(1)
 col5,  = st.beta_columns(1)
+col7,  = st.beta_columns(1)
 col2,col3,col4  = st.beta_columns(3)
 
 with  col3.beta_expander(''):
@@ -69,8 +70,7 @@ col1.pyplot()
 
 plt.subplots(figsize=(12, 2))
 plt.plot(p ,  a )
-# plt.plot(p , pf , '--') 
-col5.pyplot()
+=col5.pyplot()
 
 col4.write('lower = {:.2f}'.format( p[index_2])) 
 col4.write('50%  = {:.2f}'.format( p[index_1])) 
@@ -88,3 +88,7 @@ df = pd.DataFrame({ "ราคา" : p   ,
 
 with  col6.beta_expander('data'):
     st.write(df)
+
+plt.subplots(figsize=(12, 2))
+plt.plot(p , pf , '--') 
+col7.pyplot()    
