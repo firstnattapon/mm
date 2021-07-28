@@ -69,7 +69,10 @@ plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
 col1.pyplot()
 
 plt.subplots(figsize=(12, 2))
-plt.plot(p ,  a )
+plt.plot(p , a )
+plt.axvline(p[index_1], color='k', ls='--' , lw=0.9, ymin=0.40, ymax=0.60)
+plt.axvline(p[index_2], color='k', ls='--' , lw=0.9)
+plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
 col5.pyplot()
 
 col4.write('lower = {:.2f}'.format( p[index_2])) 
@@ -89,8 +92,8 @@ df = pd.DataFrame({ "ราคา" : p   ,
 with  col6.beta_expander('data'):
     st.write(df)
 
-plt.subplots(figsize=(11, 2))
-plt.plot(p , pf*(r-1)  , '--') 
+plt.subplots(figsize=(12, 2))
+plt.plot(p , pf*(r-1)) 
 plt.axvline(p[index_1], color='k', ls='--' , lw=0.9, ymin=0.40, ymax=0.60)
 plt.axvline(p[index_2], color='k', ls='--' , lw=0.9)
 plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
