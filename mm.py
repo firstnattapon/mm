@@ -14,10 +14,10 @@ plt.style.use('ggplot')
 from stqdm import stqdm
 np.set_printoptions(precision=8)
 
+col7,  = st.beta_columns(1)
 col1,  = st.beta_columns(1)
 col5,  = st.beta_columns(1)
 col2,col3,col4  = st.beta_columns(3)
-col7,  = st.beta_columns(1)
 
 
 with  col3.beta_expander(''):
