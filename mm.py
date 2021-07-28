@@ -12,6 +12,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 import datetime
 plt.style.use('ggplot')
 from stqdm import stqdm
+np.set_printoptions(precision=4)
 
 col1,  = st.beta_columns(1)
 col5,  = st.beta_columns(1)
@@ -93,7 +94,7 @@ with  col6.beta_expander('data'):
     st.write(df)
 
 plt.subplots(figsize=(12, 2))
-plt.plot(p ,  pf  , ls='--') 
+plt.plot(p ,  pf *(r-1)  , ls='--') 
 plt.axvline(p[index_1], color='k', ls='--' , lw=0.9, ymin=0.40, ymax=0.60)
 plt.axvline(p[index_2], color='k', ls='--' , lw=0.9)
 plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
