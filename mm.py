@@ -19,7 +19,7 @@ col5,  = st.beta_columns(1)
 col7,  = st.beta_columns(1)
 col2,col3  = st.beta_columns((3 , 1))
 
-with  col3.beta_expander(''):
+with  col2.beta_expander(''):
     capital = st.number_input('capital', min_value=0, max_value=100000 , value=1000 )
     n =  st.number_input('median', min_value=0., max_value=100000., value=0.40)
     f = st.number_input('fix', min_value=0, max_value=100000 , value=500 )
@@ -76,10 +76,10 @@ plt.axvline(p[index_2], color='k', ls='--' , lw=0.9)
 plt.axvline(p[index_3], color='k', ls='--' , lw=0.9)
 col5.pyplot()
 
-col4.write('lower = {:.2f}'.format( p[index_2])) 
-col4.write('50%  = {:.2f}'.format( p[index_1])) 
-col4.write('upper = {:.2f}'.format( p[index_3])) 
-col4.write('cf = {:.2f}'.format( pf[3] *(r-1) )) 
+col3.write('lower = {:.2f}'.format( p[index_2])) 
+col3.write('50%  = {:.2f}'.format( p[index_1])) 
+col3.write('upper = {:.2f}'.format( p[index_3])) 
+col3.write('cf = {:.2f}'.format( pf[3] *(r-1) )) 
 
 col6,  = st.beta_columns(1)
 df = pd.DataFrame({ "ราคา" : p   ,
