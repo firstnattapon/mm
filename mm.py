@@ -18,10 +18,10 @@ col2,col3,col4  = st.beta_columns(3)
 
 with  col3.beta_expander(''):
     capital = st.number_input('capital', min_value=0, max_value=100000 , value=1000 )
-    n =  st.number_input('median', min_value=0., max_value=1000., value=0.40)
+    n =  st.number_input('median', min_value=0., max_value=100000., value=0.40)
     f = st.number_input('fix', min_value=0, max_value=100000 , value=500 )
-    lowwer = st.number_input('lowwer', min_value=0., max_value=1000. , value=0.0 )
-    upper = st.number_input('upper', min_value=0., max_value=1000. , value=3.0  )
+    lowwer = st.number_input('lowwer', min_value=0., max_value=100000. , value=0.0 )
+    upper = st.number_input('upper', min_value=0., max_value=100000. , value=3.0  )
     delta = st.number_input('delta', min_value=0., max_value=10.0 , value=0.01)
     r = st.number_input('r%', min_value=0., max_value=10., value=1.01)
 
